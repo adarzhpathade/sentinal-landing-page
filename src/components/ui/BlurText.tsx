@@ -121,7 +121,11 @@ export const BlurText: React.FC<BlurTextProps> = ({
             className="inline-block will-change-[transform,filter,opacity]"
             key={index}
             initial={fromSnapshot as HTMLMotionProps<"span">["initial"]}
-            animate={(inView ? animateKeyframes : fromSnapshot) as HTMLMotionProps<"span">["animate"]}
+            animate={
+              (inView
+                ? animateKeyframes
+                : fromSnapshot) as HTMLMotionProps<"span">["animate"]
+            }
             transition={spanTransition as HTMLMotionProps<"span">["transition"]}
             onAnimationComplete={
               index === elements.length - 1 ? onAnimationComplete : undefined

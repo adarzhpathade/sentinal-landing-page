@@ -22,7 +22,9 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
   const mobileTimelineRef = useRef<HTMLDivElement | null>(null);
 
   // Track which steps have their scramble active (by index)
-  const [activeScrambles, setActiveScrambles] = useState<Set<number>>(new Set());
+  const [activeScrambles, setActiveScrambles] = useState<Set<number>>(
+    new Set()
+  );
 
   const triggerScramble = useCallback((index: number) => {
     setActiveScrambles((prev) => {
@@ -79,7 +81,13 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
             tl.fromTo(
               dot,
               { scale: 0, opacity: 0, rotation: 180 },
-              { scale: 1, opacity: 1, rotation: 0, ease: "back.out(2)", duration: 0.4 },
+              {
+                scale: 1,
+                opacity: 1,
+                rotation: 0,
+                ease: "back.out(2)",
+                duration: 0.4,
+              },
               0.3 + i * 0.5
             );
           });
@@ -96,7 +104,9 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
 
           // 4. Content blocks fade in after each large dot + trigger scramble
           contents.forEach((content, i) => {
-            const isTop = (content as HTMLElement).classList.contains("bottom-full");
+            const isTop = (content as HTMLElement).classList.contains(
+              "bottom-full"
+            );
             tl.fromTo(
               content,
               { y: isTop ? 20 : -20, opacity: 0 },
@@ -125,7 +135,8 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
 
       // Mobile: each step slides in from the left on scroll
       if (mobileTimelineRef.current) {
-        const nodes = mobileTimelineRef.current.querySelectorAll(".mobile-node");
+        const nodes =
+          mobileTimelineRef.current.querySelectorAll(".mobile-node");
         nodes.forEach((node) => {
           gsap.from(node, {
             x: -24,
@@ -148,7 +159,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
     <section
       ref={sectionRef}
       className={cn(
-        "relative z-20 w-full bg-[#F4F4F4] pb-24 sm:pb-32 md:pb-40 text-[#141314]",
+        "relative z-20 w-full bg-[#F4F4F4] pb-24 text-[#141314] sm:pb-32 md:pb-40",
         className
       )}
       aria-label="How it works Section"
@@ -177,12 +188,12 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
           {/* Desktop Timeline */}
           <div
             ref={desktopTimelineRef}
-            className="relative hidden w-full mt-32 mb-48 md:mt-48 md:mb-72 md:block"
+            className="relative mt-32 mb-48 hidden w-full md:mt-48 md:mb-72 md:block"
           >
             <div className="w-full px-8 md:px-24 lg:px-40 xl:px-48">
               <div className="relative flex w-full items-center justify-between">
                 {/* Horizontal Line */}
-                <div className="timeline-line absolute left-0 right-0 top-1/2 h-[1px] -translate-y-1/2 bg-[#FB460D]" />
+                <div className="timeline-line absolute top-1/2 right-0 left-0 h-[1px] -translate-y-1/2 bg-[#FB460D]" />
 
                 {HOW_IT_WORKS_DATA.map((step, index) => {
                   const isTop = step.position === "top";
@@ -197,8 +208,10 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
                         {/* Content Container */}
                         <div
                           className={cn(
-                            "timeline-content absolute left-[10px] -translate-x-1/2 w-max max-w-[280px] flex flex-col items-center text-center",
-                            isTop ? "bottom-full pb-[24px]" : "top-full pt-[24px]"
+                            "timeline-content absolute left-[10px] flex w-max max-w-[280px] -translate-x-1/2 flex-col items-center text-center",
+                            isTop
+                              ? "bottom-full pb-[24px]"
+                              : "top-full pt-[24px]"
                           )}
                         >
                           <h3 className="font-mono text-[20px] leading-tight font-normal text-[#141314]">
@@ -211,7 +224,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
                             />
                           </h3>
                           {step.description && (
-                            <p className="mt-2 text-[12px] leading-relaxed text-[#141314]/50 whitespace-pre-line">
+                            <p className="mt-2 text-[12px] leading-relaxed whitespace-pre-line text-[#141314]/50">
                               {step.description}
                             </p>
                           )}
@@ -230,12 +243,9 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
           </div>
 
           {/* Mobile Alternating Timeline */}
-          <div
-            ref={mobileTimelineRef}
-            className="relative mt-24 md:hidden"
-          >
+          <div ref={mobileTimelineRef} className="relative mt-24 md:hidden">
             {/* Center vertical line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 bg-[#FB460D]" />
+            <div className="absolute top-0 bottom-0 left-1/2 w-[1px] -translate-x-1/2 bg-[#FB460D]" />
 
             <div className="flex flex-col gap-12">
               {HOW_IT_WORKS_DATA.map((step, index) => {
@@ -250,13 +260,13 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
                       )}
                     >
                       {/* Dot on center line */}
-                      <div className="absolute top-1 left-1/2 -translate-x-1/2 h-3 w-3 rounded-none bg-[#FB460D] z-10" />
+                      <div className="absolute top-1 left-1/2 z-10 h-3 w-3 -translate-x-1/2 rounded-none bg-[#FB460D]" />
 
                       {/* Content */}
                       <div
                         className={cn(
                           "w-[calc(50%-20px)]",
-                          isLeft ? "text-right pr-2" : "text-left pl-2"
+                          isLeft ? "pr-2 text-right" : "pl-2 text-left"
                         )}
                       >
                         <h3 className="font-mono text-[16px] leading-tight font-normal text-[#141314]">
@@ -275,7 +285,6 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
                         )}
                       </div>
                     </div>
-
                   </React.Fragment>
                 );
               })}

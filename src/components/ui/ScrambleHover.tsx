@@ -38,7 +38,9 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
   const [displayText, setDisplayText] = useState(text);
   const [isHovering, setIsHovering] = useState(false);
   const [isScrambling, setIsScrambling] = useState(false);
-  const [revealedIndices, setRevealedIndices] = useState<Set<number>>(new Set());
+  const [revealedIndices, setRevealedIndices] = useState<Set<number>>(
+    new Set()
+  );
 
   // Ref to hold the latest revealedIndices so the interval effect doesn't rerun on changes
   const revealedIndicesRef = useRef(revealedIndices);
@@ -81,9 +83,7 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
           const middle = Math.floor(textLength / 2);
           const offset = Math.floor(revealedSize / 2);
           const nextIndex =
-            revealedSize % 2 === 0
-              ? middle + offset
-              : middle - offset - 1;
+            revealedSize % 2 === 0 ? middle + offset : middle - offset - 1;
 
           if (
             nextIndex >= 0 &&
@@ -156,13 +156,19 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
         if (sequential) {
           if (revealedIndicesRef.current.size < text.length) {
             const nextIndex = getNextIndex();
-            setRevealedIndices((prev) => {
-              const next = new Set(prev);
-              next.add(nextIndex);
-              return next;
-            });
-            setDisplayText(shuffleText(text));
+            const nextSet = new Set(revealedIndicesRef.current);
+            nextSet.add(nextIndex);
+            revealedIndicesRef.current = nextSet;
+            setRevealedIndices(nextSet);
+            if (nextSet.size >= text.length) {
+              setDisplayText(text);
+              clearInterval(interval);
+              setIsScrambling(false);
+            } else {
+              setDisplayText(shuffleText(text));
+            }
           } else {
+            setDisplayText(text);
             clearInterval(interval);
             setIsScrambling(false);
           }
