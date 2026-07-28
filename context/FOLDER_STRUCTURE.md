@@ -252,7 +252,7 @@ Good
 
 ```tsx
 <section className="mt-20">
-    <Card />
+  <Card />
 </section>
 ```
 

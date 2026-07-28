@@ -402,7 +402,7 @@ Preferred animation:
 
 Opacity
 
-+
+-
 
 TranslateY
 

@@ -54,7 +54,7 @@ Strong typing is mandatory.
 Never use:
 
 ```ts
-any
+any;
 ```
 
 Prefer:
@@ -123,41 +123,41 @@ Do not place unrelated files together.
 Components
 
 ```tsx
-HeroSection.tsx
+HeroSection.tsx;
 
-Navbar.tsx
+Navbar.tsx;
 
-Loader.tsx
+Loader.tsx;
 ```
 
 Hooks
 
 ```ts
-useLenis.ts
+useLenis.ts;
 
-useScrollAnimation.ts
+useScrollAnimation.ts;
 
-useHeroTimeline.ts
+useHeroTimeline.ts;
 ```
 
 Utilities
 
 ```ts
-formatDate.ts
+formatDate.ts;
 
-createTimeline.ts
+createTimeline.ts;
 
-clamp.ts
+clamp.ts;
 ```
 
 Animation helpers
 
 ```ts
-heroAnimation.ts
+heroAnimation.ts;
 
-loaderTimeline.ts
+loaderTimeline.ts;
 
-workflowTimeline.ts
+workflowTimeline.ts;
 ```
 
 ---

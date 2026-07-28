@@ -14,6 +14,7 @@ export interface HeroTimelineTargets {
   buttonsContainer: HTMLElement | null;
   bottomBarElement: HTMLElement | null;
   backgroundElement: HTMLElement | null;
+  parallaxElement?: HTMLElement | null;
 }
 
 /**
@@ -29,6 +30,7 @@ export function createHeroTimeline({
   buttonsContainer,
   bottomBarElement,
   backgroundElement,
+  parallaxElement,
 }: HeroTimelineTargets) {
   const mm = gsap.matchMedia();
 
@@ -52,10 +54,17 @@ export function createHeroTimeline({
       });
 
       // Set initial hidden states
-      if (navElement) gsap.set(navElement, { opacity: 0, y: reduceMotion ? 0 : -20 });
-      if (descriptionElement) gsap.set(descriptionElement, { opacity: 0, y: reduceMotion ? 0 : 20 });
-      if (buttonsContainer) gsap.set(buttonsContainer, { opacity: 0, scale: reduceMotion ? 1 : 0.96 });
-      if (bottomBarElement) gsap.set(bottomBarElement, { opacity: 0, y: reduceMotion ? 0 : 15 });
+      if (navElement)
+        gsap.set(navElement, { opacity: 0, y: reduceMotion ? 0 : -20 });
+      if (descriptionElement)
+        gsap.set(descriptionElement, { opacity: 0, y: reduceMotion ? 0 : 20 });
+      if (buttonsContainer)
+        gsap.set(buttonsContainer, {
+          opacity: 0,
+          scale: reduceMotion ? 1 : 0.96,
+        });
+      if (bottomBarElement)
+        gsap.set(bottomBarElement, { opacity: 0, y: reduceMotion ? 0 : 15 });
       if (backgroundElement) gsap.set(backgroundElement, { opacity: 0 });
 
       // 1. Reveal Navbar
@@ -128,19 +137,19 @@ export function createHeroTimeline({
         );
       }
 
-      // Configure ScrollTrigger for gentle transition out when scrolling down
-      if (!reduceMotion && container) {
-        gsap.to(
-          [titleElement, descriptionElement, buttonsContainer, bottomBarElement].filter(Boolean),
+      // Scroll parallax transition: Move hero elements down slightly as the next section scrolls over them
+      if (!reduceMotion && typeof window !== "undefined" && parallaxElement) {
+        gsap.fromTo(
+          parallaxElement,
+          { y: 0, opacity: 1 },
           {
-            y: -50,
-            opacity: 0.15,
+            y: 150, // Premium parallax push down
+            opacity: 0, // Smooth fade out
             ease: "none",
             scrollTrigger: {
-              trigger: container,
-              start: "top top",
-              end: "bottom top",
-              scrub: 0.5,
+              start: 0,
+              end: window.innerHeight,
+              scrub: true, // synchronous scrubbing ensures it perfectly resets on scroll up
             },
           }
         );

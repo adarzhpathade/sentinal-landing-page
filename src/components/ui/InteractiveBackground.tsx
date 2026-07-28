@@ -55,9 +55,9 @@ export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({
     interface Ripple {
       originX: number;
       originY: number;
-      radius: number;       // current outer edge of the wave
+      radius: number; // current outer edge of the wave
       startTime: number;
-      maxRadius: number;    // diagonal of the viewport
+      maxRadius: number; // diagonal of the viewport
     }
 
     const ripples: Ripple[] = [];
@@ -120,7 +120,8 @@ export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({
 
       // Spawn ripples as cursor moves (throttled)
       const now = performance.now();
-      if (now - lastRippleTime > 60) { // ~16 ripples/sec max
+      if (now - lastRippleTime > 60) {
+        // ~16 ripples/sec max
         const maxDiag = Math.sqrt(width * width + height * height);
         ripples.push({
           originX: mouse.x,
@@ -153,8 +154,8 @@ export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({
     document.addEventListener("mouseleave", handleMouseLeave);
 
     // --- Render loop ---
-    const RIPPLE_WIDTH = 250;   // Width of the wave band in px
-    const FADE_SPEED = 0.025;   // How fast squares fade out after wave passes
+    const RIPPLE_WIDTH = 250; // Width of the wave band in px
+    const FADE_SPEED = 0.025; // How fast squares fade out after wave passes
 
     const render = (now: number) => {
       ctx.clearRect(0, 0, width, height);
@@ -200,7 +201,10 @@ export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({
           else if (dist < innerEdge) {
             // Residue fades based on how far the wave has gone past
             const passedDist = innerEdge - dist;
-            const residue = Math.max(0, MAX_ALPHA * 0.4 * Math.exp(-passedDist * 0.003));
+            const residue = Math.max(
+              0,
+              MAX_ALPHA * 0.4 * Math.exp(-passedDist * 0.003)
+            );
             targetAlpha = Math.max(targetAlpha, residue);
           }
         }
@@ -216,7 +220,12 @@ export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({
         if (sq.currentAlpha > 0.005) {
           ctx.fillStyle = `rgba(${SQ_R},${SQ_G},${SQ_B},${sq.currentAlpha.toFixed(3)})`;
           // Draw crisp geometric squares snapped to integer pixel coordinates to prevent circular anti-aliasing blur
-          ctx.fillRect(Math.round(sq.x), Math.round(sq.y), SQUARE_SIZE, SQUARE_SIZE);
+          ctx.fillRect(
+            Math.round(sq.x),
+            Math.round(sq.y),
+            SQUARE_SIZE,
+            SQUARE_SIZE
+          );
         }
       }
 
@@ -237,7 +246,7 @@ export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({
   return (
     <div
       data-hero-bg
-      className={`absolute inset-0 z-0 h-full w-full overflow-hidden pointer-events-none ${className || ""}`}
+      className={`pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden ${className || ""}`}
     >
       <canvas
         ref={canvasRef}

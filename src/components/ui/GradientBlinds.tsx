@@ -363,7 +363,10 @@ void main() {
         container.removeChild(canvas);
       }
       const callIfFn = (obj: unknown, key: string) => {
-        if (obj && typeof (obj as Record<string, unknown>)[key] === "function") {
+        if (
+          obj &&
+          typeof (obj as Record<string, unknown>)[key] === "function"
+        ) {
           ((obj as Record<string, unknown>)[key] as () => void)();
         }
       };
@@ -398,7 +401,7 @@ void main() {
   return (
     <div
       ref={containerRef}
-      className={`w-full h-full overflow-hidden relative ${className}`}
+      className={`relative h-full w-full overflow-hidden ${className}`}
       style={{
         ...(mixBlendMode && {
           mixBlendMode: mixBlendMode as React.CSSProperties["mixBlendMode"],

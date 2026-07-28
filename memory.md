@@ -5,7 +5,7 @@ Last updated: 2026-07-28T01:17:00+05:30
 ## What was built
 
 - **Navbar Alignment & Spacing (`src/components/layout/Navbar.tsx`)**:
-  - Re-architected the Navbar to inherit the exact same `<Container>` component used in the Hero, guaranteeing pixel-perfect left alignment. 
+  - Re-architected the Navbar to inherit the exact same `<Container>` component used in the Hero, guaranteeing pixel-perfect left alignment.
   - Removed artificial `justify-center` and `max-w-[1400px]` constraints, allowing the right-side "DOWNLOAD" button to naturally lock to the far right edge of the viewport.
   - Restored precise vertical padding for the un-scrolled transparent state.
 - **Hero Typography Density (`src/sections/Hero.tsx`)**:

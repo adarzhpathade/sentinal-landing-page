@@ -20,10 +20,7 @@ export const Container: React.FC<ContainerProps> = ({
 }) => {
   return (
     <Component
-      className={cn(
-        "w-full px-4 sm:px-6 md:px-8",
-        className
-      )}
+      className={cn("w-full px-4 sm:px-6 md:px-8", className)}
       {...props}
     >
       {children}

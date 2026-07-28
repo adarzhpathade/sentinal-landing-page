@@ -8,6 +8,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/Button";
 import { BlurText } from "@/components/ui/BlurText";
 import { GradientBlinds } from "@/components/ui/GradientBlinds";
+import ScrambleHover from "@/components/ui/ScrambleHover";
 import { createHeroTimeline } from "@/animations/heroTimeline";
 import { cn } from "@/utils/cn";
 
@@ -28,6 +29,7 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
   const buttonsRef = useRef<HTMLDivElement | null>(null);
   const bottomBarRef = useRef<HTMLDivElement | null>(null);
   const bgRef = useRef<HTMLDivElement | null>(null);
+  const parallaxRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(
     () => {
@@ -41,6 +43,7 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
         buttonsContainer: buttonsRef.current,
         bottomBarElement: bottomBarRef.current,
         backgroundElement: bgRef.current,
+        parallaxElement: parallaxRef.current,
       });
 
       return () => {
@@ -83,86 +86,108 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
           distortAmount={0}
           shineDirection="left"
           mixBlendMode="lighten"
-          className="absolute inset-0 z-0 pointer-events-auto"
+          className="pointer-events-auto absolute inset-0 z-0"
         />
       </div>
 
       {/* Top Navigation Bar */}
       <Navbar ref={navRef} />
 
-      {/* Main Hero Content (Left-aligned, authoritative vertical padding above center) */}
-      <div className="relative z-10 flex w-full flex-1 flex-col justify-end sm:justify-center pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-8 sm:pb-16 md:pb-24">
-        <Container>
-          <div className="w-full max-w-[1400px] mt-8 sm:mt-12 md:mt-16 lg:mt-24">
-            {/* Sleek Display Title with BlurText reveal */}
-            <h1
-              ref={titleRef}
-              className="text-left font-sans text-[40px] sm:text-5xl md:text-6xl lg:text-[72px] xl:text-[84px] font-normal sm:font-medium tracking-tight text-white leading-[0.9] select-none"
-            >
-              <BlurText
-                text={HERO_DATA.title.line1}
-                delay={100}
-                animateBy="words"
-                direction="bottom"
-                as="div"
-                className="block"
-              />
-              <BlurText
-                text={HERO_DATA.title.line2}
-                delay={100}
-                initialDelay={400}
-                animateBy="words"
-                direction="bottom"
-                as="div"
-                className="block text-white/95"
-              />
-            </h1>
-
-            {/* Compact Editorial Description */}
-            <p
-              ref={descriptionRef}
-              className="text-left mt-2 sm:mt-3 md:mt-4 max-w-[280px] sm:max-w-[380px] md:max-w-[480px] font-sans text-xs sm:text-sm md:text-base font-normal leading-relaxed text-white/50"
-            >
-              {HERO_DATA.description}
-            </p>
-
-            {/* CTA Actions */}
-            <div
-              ref={buttonsRef}
-              className="mt-4 sm:mt-6 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 md:gap-8"
-            >
-              <Button
-                variant="primary"
-                withSquareIcon
-                href={HERO_DATA.primaryCta.href}
+      {/* Parallax Wrapper for content to scroll down smoothly */}
+      <div
+        ref={parallaxRef}
+        className="flex w-full flex-1 flex-col justify-between"
+      >
+        {/* Main Hero Content (Left-aligned, authoritative vertical padding above center) */}
+        <div className="relative z-10 flex w-full flex-1 flex-col justify-end pt-12 pb-8 sm:justify-center sm:pt-16 sm:pb-16 md:pt-20 md:pb-24 lg:pt-24">
+          <Container>
+            <div className="mt-8 w-full max-w-[1400px] sm:mt-12 md:mt-16 lg:mt-24">
+              {/* Sleek Display Title with BlurText reveal */}
+              <h1
+                ref={titleRef}
+                className="text-left font-sans text-[40px] leading-[0.9] font-normal tracking-tight text-white select-none sm:text-5xl sm:font-medium md:text-6xl lg:text-[72px] xl:text-[84px]"
               >
-                {HERO_DATA.primaryCta.label}
-              </Button>
-              <Button
-                variant="secondary"
-                href={HERO_DATA.secondaryCta.href}
-                className="text-xs sm:text-sm text-white/70 hover:text-white"
+                <BlurText
+                  text={HERO_DATA.title.line1}
+                  delay={100}
+                  animateBy="words"
+                  direction="bottom"
+                  as="div"
+                  className="block"
+                />
+                <BlurText
+                  text={HERO_DATA.title.line2}
+                  delay={100}
+                  initialDelay={400}
+                  animateBy="words"
+                  direction="bottom"
+                  as="div"
+                  className="block text-white/95"
+                />
+              </h1>
+
+              {/* Compact Editorial Description */}
+              <p
+                ref={descriptionRef}
+                className="mt-2 max-w-[280px] text-left font-sans text-xs leading-relaxed font-normal text-white/50 sm:mt-3 sm:max-w-[380px] sm:text-sm md:mt-4 md:max-w-[480px] md:text-base"
               >
-                {HERO_DATA.secondaryCta.label}
-              </Button>
+                {HERO_DATA.description}
+              </p>
+
+              {/* CTA Actions */}
+              <div
+                ref={buttonsRef}
+                className="mt-4 flex flex-col items-start gap-3 sm:mt-6 sm:flex-row sm:items-center sm:gap-6 md:mt-8 md:gap-8"
+              >
+                <Button
+                  variant="primary"
+                  withSquareIcon
+                  href={HERO_DATA.primaryCta.href}
+                >
+                  {HERO_DATA.primaryCta.label}
+                </Button>
+                <Button
+                  variant="secondary"
+                  href={HERO_DATA.secondaryCta.href}
+                  className="text-xs text-white/70 hover:text-white sm:text-sm"
+                >
+                  {HERO_DATA.secondaryCta.label}
+                </Button>
+              </div>
             </div>
-          </div>
-        </Container>
-      </div>
+          </Container>
+        </div>
 
-      {/* Bottom Anchor Bar (Technical Badges anchored to bottom edge) */}
-      <div ref={bottomBarRef} className="relative z-10 mt-auto w-full pb-8 sm:pb-10 md:pb-12">
-        <Container>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2.5 sm:gap-x-8 sm:gap-y-4 md:gap-10 text-[11px] sm:text-xs md:text-sm font-mono font-bold tracking-[0.15em] sm:tracking-[0.2em] text-white/30 uppercase select-none">
-            <span className="hover:text-white/60 transition-colors">BASH</span>
-            <span className="hover:text-white/60 transition-colors">ZSH</span>
-            <span className="hover:text-white/60 transition-colors">POWERSHELL</span>
-            <span className="hover:text-white/60 transition-colors">FISH</span>
-            <span className="text-[#FB460D]/70 hover:text-[#FB460D] transition-colors">
-              + 100% LOCAL MODELS
-            </span>
-          </div>
-        </Container>
+        {/* Bottom Anchor Bar (Technical Badges anchored to bottom edge) */}
+        <div
+          ref={bottomBarRef}
+          className="relative z-10 mt-auto w-full pb-8 sm:pb-10 md:pb-12"
+        >
+          <Container>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2.5 font-mono text-[11px] font-bold tracking-[0.15em] text-white/30 uppercase select-none sm:gap-x-8 sm:gap-y-4 sm:text-xs sm:tracking-[0.2em] md:gap-10 md:text-sm">
+              <ScrambleHover
+                text="BASH"
+                className="transition-colors hover:text-white/60"
+              />
+              <ScrambleHover
+                text="ZSH"
+                className="transition-colors hover:text-white/60"
+              />
+              <ScrambleHover
+                text="POWERSHELL"
+                className="transition-colors hover:text-white/60"
+              />
+              <ScrambleHover
+                text="FISH"
+                className="transition-colors hover:text-white/60"
+              />
+              <ScrambleHover
+                text="+ 100% LOCAL MODELS"
+                className="text-[#FB460D]/70 transition-colors hover:text-[#FB460D]"
+              />
+            </div>
+          </Container>
+        </div>
       </div>
     </section>
   );

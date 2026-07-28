@@ -3,8 +3,7 @@
 import React from "react";
 import { cn } from "@/utils/cn";
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline";
   withSquareIcon?: boolean;
   href?: string;
@@ -54,9 +53,9 @@ export const Button = React.forwardRef<
             aria-hidden="true"
           >
             {/* Dim line starts immediately on hover (delay-0), waits on unhover (delay-240ms) */}
-            <span className="absolute inset-0 bg-white/50 transition-transform duration-300 ease-out delay-[240ms] group-hover:delay-0 group-hover:translate-x-full" />
+            <span className="absolute inset-0 bg-white/50 transition-transform delay-[240ms] duration-300 ease-out group-hover:translate-x-full group-hover:delay-0" />
             {/* Bright line waits on hover (delay-240ms), exits immediately on unhover (delay-0) */}
-            <span className="absolute inset-0 bg-white -translate-x-full transition-transform duration-300 ease-out delay-0 group-hover:delay-[240ms] group-hover:translate-x-0" />
+            <span className="absolute inset-0 -translate-x-full bg-white transition-transform delay-0 duration-300 ease-out group-hover:translate-x-0 group-hover:delay-[240ms]" />
           </span>
         )}
       </>
@@ -65,7 +64,7 @@ export const Button = React.forwardRef<
     // If withSquareIcon is enabled for primary buttons (signature two-block CTA layout)
     if (variant === "primary" && withSquareIcon) {
       const wrapperClasses = cn("inline-flex items-stretch group", className);
-      
+
       if (href) {
         return (
           <a
@@ -76,7 +75,7 @@ export const Button = React.forwardRef<
           >
             {/* Left Square (Appears on Hover) */}
             <span
-              className="bg-[#FB460D] group-hover:bg-[#FF5C26] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] flex items-center justify-center text-[#141314] rounded-none overflow-hidden w-0 mr-0 group-hover:w-9 group-hover:mr-1"
+              className="mr-0 flex w-0 items-center justify-center overflow-hidden rounded-none bg-[#FB460D] text-[#141314] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-1 group-hover:w-9 group-hover:bg-[#FF5C26]"
               aria-hidden="true"
             >
               <svg
@@ -85,7 +84,7 @@ export const Button = React.forwardRef<
                 viewBox="0 0 14 14"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="min-w-[14px] transform -translate-x-full -rotate-180 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0 group-hover:rotate-0"
+                className="min-w-[14px] -translate-x-full -rotate-180 transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0 group-hover:rotate-0"
               >
                 <path
                   d="M7 2V9.5M4 6.5L7 9.5L10 6.5M2.5 12H11.5"
@@ -98,13 +97,19 @@ export const Button = React.forwardRef<
             </span>
 
             {/* Main Button Content */}
-            <span className={cn(baseStyles, variantStyles.primary, "h-full flex-1 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]")}>
+            <span
+              className={cn(
+                baseStyles,
+                variantStyles.primary,
+                "h-full flex-1 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              )}
+            >
               {children}
             </span>
 
             {/* Right Square (Disappears on Hover) */}
             <span
-              className="bg-[#FB460D] group-hover:bg-[#FF5C26] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] flex items-center justify-center text-[#141314] rounded-none overflow-hidden w-9 ml-1 group-hover:w-0 group-hover:ml-0"
+              className="ml-1 flex w-9 items-center justify-center overflow-hidden rounded-none bg-[#FB460D] text-[#141314] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-0 group-hover:w-0 group-hover:bg-[#FF5C26]"
               aria-hidden="true"
             >
               <svg
@@ -113,7 +118,7 @@ export const Button = React.forwardRef<
                 viewBox="0 0 14 14"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="min-w-[14px] transform translate-x-0 rotate-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-full group-hover:rotate-180"
+                className="min-w-[14px] translate-x-0 rotate-0 transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-full group-hover:rotate-180"
               >
                 <path
                   d="M7 2V9.5M4 6.5L7 9.5L10 6.5M2.5 12H11.5"
@@ -133,7 +138,7 @@ export const Button = React.forwardRef<
           {/* Left Square (Appears on Hover) */}
           <button
             type="button"
-            className="bg-[#FB460D] hover:bg-[#FF5C26] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] flex items-center justify-center text-[#141314] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB460D] rounded-none overflow-hidden w-0 mr-0 group-hover:w-9 group-hover:mr-1"
+            className="mr-0 flex w-0 items-center justify-center overflow-hidden rounded-none bg-[#FB460D] text-[#141314] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-1 group-hover:w-9 hover:bg-[#FF5C26] focus-visible:ring-2 focus-visible:ring-[#FB460D] focus-visible:outline-none"
             disabled={disabled}
             aria-hidden="true"
             tabIndex={-1}
@@ -144,7 +149,7 @@ export const Button = React.forwardRef<
               viewBox="0 0 14 14"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="min-w-[14px] transform -translate-x-full -rotate-180 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0 group-hover:rotate-0"
+              className="min-w-[14px] -translate-x-full -rotate-180 transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0 group-hover:rotate-0"
             >
               <path
                 d="M7 2V9.5M4 6.5L7 9.5L10 6.5M2.5 12H11.5"
@@ -159,7 +164,11 @@ export const Button = React.forwardRef<
           {/* Main Button Content */}
           <button
             ref={ref as React.Ref<HTMLButtonElement>}
-            className={cn(baseStyles, variantStyles.primary, "h-full flex-1 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]")}
+            className={cn(
+              baseStyles,
+              variantStyles.primary,
+              "h-full flex-1 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+            )}
             disabled={disabled}
             {...props}
           >
@@ -169,7 +178,7 @@ export const Button = React.forwardRef<
           {/* Right Square (Disappears on Hover) */}
           <button
             type="button"
-            className="bg-[#FB460D] hover:bg-[#FF5C26] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] flex items-center justify-center text-[#141314] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB460D] rounded-none overflow-hidden w-9 ml-1 group-hover:w-0 group-hover:ml-0"
+            className="ml-1 flex w-9 items-center justify-center overflow-hidden rounded-none bg-[#FB460D] text-[#141314] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-0 group-hover:w-0 hover:bg-[#FF5C26] focus-visible:ring-2 focus-visible:ring-[#FB460D] focus-visible:outline-none"
             disabled={disabled}
             aria-hidden="true"
             tabIndex={-1}
@@ -180,7 +189,7 @@ export const Button = React.forwardRef<
               viewBox="0 0 14 14"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="min-w-[14px] transform translate-x-0 rotate-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-full group-hover:rotate-180"
+              className="min-w-[14px] translate-x-0 rotate-0 transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-full group-hover:rotate-180"
             >
               <path
                 d="M7 2V9.5M4 6.5L7 9.5L10 6.5M2.5 12H11.5"
