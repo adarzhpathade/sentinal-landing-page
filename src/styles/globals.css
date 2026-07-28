@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+:root {
+  /* Color Palette */
+  --color-primary-dark: #141314;
+  --color-primary-light: #eeeeee;
+  --color-nav-dark: #333333;
+  --color-nav-light: #d5d5d5;
+  --color-accent: #fb460d;
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+
+  --background: var(--color-primary-dark);
+  --foreground: #ffffff;
+
+  /* Spacing Scale */
+  --space-8: 0.5rem;
+  --space-16: 1rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
+  --space-40: 2.5rem;
+  --space-48: 3rem;
+  --space-64: 4rem;
+  --space-80: 5rem;
+  --space-96: 6rem;
+  --space-128: 8rem;
+  --space-160: 10rem;
+  --space-200: 12.5rem;
+
+  /* Grid & Container Widths */
+  --container-max: 1440px;
+  --content-max: 1280px;
+  --reading-max: 768px;
+}
+
+@theme inline {
+  /* Colors */
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-light: var(--color-primary-light);
+  --color-nav-dark: var(--color-nav-dark);
+  --color-nav-light: var(--color-nav-light);
+  --color-accent: var(--color-accent);
+  --color-border-subtle: var(--color-border-subtle);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Typography */
+  --font-sans: "Aktiv Grotesk", var(--font-geist-sans), sans-serif;
+  --font-mono: "Geist Mono", var(--font-geist-mono), monospace;
+
+  --text-hero: clamp(6rem, 8vw, 7.5rem);
+  --text-section-lg: clamp(4rem, 5vw, 4.5rem);
+  --text-heading-md: clamp(2.5rem, 3.5vw, 3rem);
+  --text-heading-sm: clamp(1.75rem, 2.5vw, 2rem);
+  --text-body-lg: 1.25rem;
+  --text-body: 1.125rem;
+  --text-sm: 1rem;
+  --text-label: 0.875rem;
+  --text-micro: 0.75rem;
+
+  /* Spacing Tokens */
+  --spacing-8px: var(--space-8);
+  --spacing-16px: var(--space-16);
+  --spacing-24px: var(--space-24);
+  --spacing-32px: var(--space-32);
+  --spacing-40px: var(--space-40);
+  --spacing-48px: var(--space-48);
+  --spacing-64px: var(--space-64);
+  --spacing-80px: var(--space-80);
+  --spacing-96px: var(--space-96);
+  --spacing-128px: var(--space-128);
+  --spacing-160px: var(--space-160);
+  --spacing-200px: var(--space-200);
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* Max Widths */
+  --max-width-container: var(--container-max);
+  --max-width-content: var(--content-max);
+  --max-width-reading: var(--reading-max);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+/* Permanently hide scrollbars across all browsers and devices */
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+* {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+}
+
+html, body {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none !important;
+}
