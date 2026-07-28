@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState, useMemo } from "react";
-import { motion, type Easing } from "motion/react";
+import { motion, type Easing, type HTMLMotionProps } from "motion/react";
 
 const buildKeyframes = (
   from: Record<string, unknown>,
@@ -120,9 +120,9 @@ export const BlurText: React.FC<BlurTextProps> = ({
           <motion.span
             className="inline-block will-change-[transform,filter,opacity]"
             key={index}
-            initial={fromSnapshot as any}
-            animate={(inView ? animateKeyframes : fromSnapshot) as any}
-            transition={spanTransition as any}
+            initial={fromSnapshot as HTMLMotionProps<"span">["initial"]}
+            animate={(inView ? animateKeyframes : fromSnapshot) as HTMLMotionProps<"span">["animate"]}
+            transition={spanTransition as HTMLMotionProps<"span">["transition"]}
             onAnimationComplete={
               index === elements.length - 1 ? onAnimationComplete : undefined
             }

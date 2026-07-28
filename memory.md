@@ -1,43 +1,40 @@
-# Memory — Sentinel Layout & Premium Animations
+# Memory — Sentinel Features Section & Parallax Polish
 
-Last updated: 2026-07-28T01:17:00+05:30
+Last updated: 2026-07-28T08:52:11+05:30
 
 ## What was built
 
-- **Navbar Alignment & Spacing (`src/components/layout/Navbar.tsx`)**:
-  - Re-architected the Navbar to inherit the exact same `<Container>` component used in the Hero, guaranteeing pixel-perfect left alignment.
-  - Removed artificial `justify-center` and `max-w-[1400px]` constraints, allowing the right-side "DOWNLOAD" button to naturally lock to the far right edge of the viewport.
-  - Restored precise vertical padding for the un-scrolled transparent state.
-- **Hero Typography Density (`src/sections/Hero.tsx`)**:
-  - Tightened the Hero text density by dropping the `h1` line height to `0.9`, drastically reducing the margin below the title, and shifting the CTA button group upward for a highly compact, editorial lockup.
-- **Premium Secondary Button Interaction (`src/components/ui/Button.tsx`)**:
-  - Built a custom "swipe" hover animation for the "Tell us More" link.
-  - Configured a dim line to slide out while a bright line slides in from the left, using a perfectly staggered 80% time delay (`240ms` offset on a `300ms` duration) to create a continuous chasing effect with a fixed 20% gap.
-- **Mechanical Primary Button Interaction (`src/components/ui/Button.tsx`)**:
-  - Completely re-engineered the primary `DOWNLOAD` button to feature a tactile, physical "push" hover interaction.
-  - Replaced standard opacity fading with structural flex manipulation: a hidden left square expands (`w-0` to `w-9`) while the right square collapses (`w-9` to `w-0`), smoothly shoving the main text block across the button.
-  - Attached horizontal translations and 180-degree rotations to the SVG icons as they enter/exit their bounding boxes, simulating a physical block sliding straight through the button.
-  - Upgraded the entire interaction to a `500ms` duration with a premium `cubic-bezier(0.22,1,0.36,1)` (ease-out-quint) curve for a buttery smooth, snappy-to-fluid feel.
+- **Features Section (`src/sections/Features.tsx`, `src/data/features.ts`)**:
+  - Built the new Features grid layout matching the premium editorial design.
+  - Implemented responsive edge-to-edge layout styling on ultra-wide screens, removing max-width constraints so the content fluidly fills the monitor.
+- **Scramble & Shimmer Interactions (`src/components/ui/ScrambleHover.tsx`)**:
+  - Upgraded the `ScrambleHover` component to support dynamic text shifting and a structural layout box that slides in from the left on hover.
+  - Built a synchronized red "wiping" shimmer effect using sequential character scrambling that wipes left-to-right as the scrambled characters resolve.
+  - Made the effect fully responsive: on mobile, the box and text shift are static, but the scramble animation auto-plays once using a custom `triggerOnView="mobileOnly"` property triggered by scroll view.
+- **Hero Parallax Scrolling (`src/animations/heroTimeline.ts`, `src/sections/Hero.tsx`)**:
+  - Implemented a smooth parallax push-down and fade-out effect for the Hero content as the page scrolls down and the Features section slides over it.
 
 ## Decisions made
 
-- **Structural Animation over Fades**: Explicitly moved away from opacity fades for the primary button, choosing to manipulate DOM width (`w-0` to `w-9`) and SVG translations to create a purely mechanical, physical "pushing" sensation.
-- **Component Consistency**: Enforced the use of the `<Container>` abstraction in the Navbar instead of recreating padding manually, locking the global layout alignment.
+- **Animation Architecture**: Instead of animating the individual Hero elements (which conflict with initial load animations), isolated the scroll parallax into a dedicated `parallaxRef` wrapper within `Hero.tsx`. This avoids all GSAP tween conflicts when scrubbing scroll positions.
+- **Mobile Animation Strategy**: Used `useInView` linked to the scroll position on mobile to auto-play hover interactions exactly once, ensuring touch users get to see the premium motion design without needing cursor hover states.
+- **Widescreen Layout**: Completely removed `max-w-[1400px]` from the Features wrapper, deciding on an absolute edge-to-edge fluid layout that maximizes the width of ultra-wide monitors.
 
 ## Problems solved
 
-- **Layout Misalignment**: Solved the visual disconnect between the Navbar and the Hero content by fixing their container logic.
-- **Hover Ghosting**: Removed the ghosting appearance of the primary CTA's icons by applying solid, translation-based exit/entry animations.
+- **Parallax Disappearance Bug**: Fixed a critical GSAP conflict where `ScrollTrigger` and timeline animations targeted the same properties (`y`, `opacity`) on the same elements, causing them to get stuck and permanently disappear. Solved by wrapping elements and animating the wrapper with `gsap.fromTo`.
+- **Props Extraction Bug**: Fixed a runtime `ReferenceError` in `ScrambleHover` by properly extracting the `customHoverState` prop before passing the rest of the props down to the DOM element.
 
 ## Current state
 
-- The Navbar, Hero section, and UI Buttons are fully styled, tightly aligned, and feature highly polished, buttery smooth micro-interactions.
-- The local dev server is running cleanly and the current aesthetic perfectly aligns with the premium "Sentinel" brand guidelines.
+- The Hero and Features sections are fully built, highly responsive, and feature complex scroll and hover animations.
+- The project successfully builds (`npm run build`) with zero linting or TypeScript errors.
+- All code is formatted, committed, and pushed to the remote `main` branch.
 
 ## Next session starts with
 
-- Proceeding to implement the next major section of the landing page (following the Hero) based on the design specification docs, ensuring the same level of typographic density and interaction quality is maintained.
+- Building the next section after "Features" based on the design docs, or continuing to refine remaining UI states if requested.
 
 ## Open questions
 
-- None. The Hero UI and component animations are complete and approved.
+- None. The Features section is complete, fully interactive, and pushed to production.

@@ -1,5 +1,6 @@
 import { Hero } from "@/sections/Hero";
 import { Features } from "@/sections/Features";
+import { HowItWorks } from "@/sections/HowItWorks";
 
 export default function HomePage() {
   return (
@@ -11,6 +12,9 @@ export default function HomePage() {
 
       {/* Features section overlapping the Hero */}
       <Features />
+
+      {/* How it works section */}
+      <HowItWorks />
     </main>
   );
 }

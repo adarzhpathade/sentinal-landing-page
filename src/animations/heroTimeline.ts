@@ -23,9 +23,7 @@ export interface HeroTimelineTargets {
  * (Title entrance is handled by React Bits BlurText component).
  */
 export function createHeroTimeline({
-  container,
   navElement,
-  titleElement,
   descriptionElement,
   buttonsContainer,
   bottomBarElement,

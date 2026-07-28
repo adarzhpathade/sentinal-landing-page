@@ -38,7 +38,13 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
   const [displayText, setDisplayText] = useState(text);
   const [isHovering, setIsHovering] = useState(false);
   const [isScrambling, setIsScrambling] = useState(false);
-  const [revealedIndices, setRevealedIndices] = useState(new Set<number>());
+  const [revealedIndices, setRevealedIndices] = useState<Set<number>>(new Set());
+
+  // Ref to hold the latest revealedIndices so the interval effect doesn't rerun on changes
+  const revealedIndicesRef = useRef(revealedIndices);
+  useEffect(() => {
+    revealedIndicesRef.current = revealedIndices;
+  }, [revealedIndices]);
 
   // Trigger once on view if enabled
   useEffect(() => {
@@ -46,14 +52,16 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
       if (triggerOnView === "mobileOnly" && window.innerWidth >= 768) {
         return; // Do not auto-trigger on desktop
       }
-      setIsHovering(true);
+      const timer = setTimeout(() => setIsHovering(true), 0);
+      return () => clearTimeout(timer);
     }
   }, [isInView, triggerOnView]);
 
   // Sync with external hover state if provided
   useEffect(() => {
     if (customHoverState !== undefined) {
-      setIsHovering(customHoverState);
+      const timer = setTimeout(() => setIsHovering(customHoverState), 0);
+      return () => clearTimeout(timer);
     }
   }, [customHoverState]);
 
@@ -63,43 +71,44 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
 
     const getNextIndex = () => {
       const textLength = text.length;
+      const revealedSize = revealedIndicesRef.current.size;
       switch (revealDirection) {
         case "start":
-          return revealedIndices.size;
+          return revealedSize;
         case "end":
-          return textLength - 1 - revealedIndices.size;
+          return textLength - 1 - revealedSize;
         case "center":
           const middle = Math.floor(textLength / 2);
-          const offset = Math.floor(revealedIndices.size / 2);
+          const offset = Math.floor(revealedSize / 2);
           const nextIndex =
-            revealedIndices.size % 2 === 0
+            revealedSize % 2 === 0
               ? middle + offset
               : middle - offset - 1;
 
           if (
             nextIndex >= 0 &&
             nextIndex < textLength &&
-            !revealedIndices.has(nextIndex)
+            !revealedIndicesRef.current.has(nextIndex)
           ) {
             return nextIndex;
           }
 
           for (let i = 0; i < textLength; i++) {
-            if (!revealedIndices.has(i)) return i;
+            if (!revealedIndicesRef.current.has(i)) return i;
           }
           return 0;
         default:
-          return revealedIndices.size;
+          return revealedSize;
       }
     };
 
-    const shuffleText = (text: string) => {
+    const shuffleText = (originalText: string) => {
       if (useOriginalCharsOnly) {
-        const positions = text.split("").map((char, i) => ({
+        const positions = originalText.split("").map((char, i) => ({
           char,
           isSpace: char === " ",
           index: i,
-          isRevealed: revealedIndices.has(i),
+          isRevealed: revealedIndicesRef.current.has(i),
         }));
 
         const nonSpaceChars = positions
@@ -119,16 +128,16 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
         return positions
           .map((p) => {
             if (p.isSpace) return " ";
-            if (p.isRevealed) return text[p.index];
+            if (p.isRevealed) return originalText[p.index];
             return nonSpaceChars[charIndex++];
           })
           .join("");
       } else {
-        return text
+        return originalText
           .split("")
           .map((char, i) => {
             if (char === " ") return " ";
-            if (revealedIndices.has(i)) return text[i];
+            if (revealedIndicesRef.current.has(i)) return originalText[i];
             return availableChars[
               Math.floor(Math.random() * availableChars.length)
             ];
@@ -142,12 +151,16 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
       : characters.split("");
 
     if (isHovering) {
-      setIsScrambling(true);
+      const stateTimer = setTimeout(() => setIsScrambling(true), 0);
       interval = setInterval(() => {
         if (sequential) {
-          if (revealedIndices.size < text.length) {
+          if (revealedIndicesRef.current.size < text.length) {
             const nextIndex = getNextIndex();
-            revealedIndices.add(nextIndex);
+            setRevealedIndices((prev) => {
+              const next = new Set(prev);
+              next.add(nextIndex);
+              return next;
+            });
             setDisplayText(shuffleText(text));
           } else {
             clearInterval(interval);
@@ -163,14 +176,21 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
           }
         }
       }, scrambleSpeed);
-    } else {
-      setDisplayText(text);
-      revealedIndices.clear();
-    }
 
-    return () => {
-      if (interval) clearInterval(interval);
-    };
+      return () => {
+        clearTimeout(stateTimer);
+        if (interval) clearInterval(interval);
+      };
+    } else {
+      const resetTimer = setTimeout(() => {
+        setDisplayText(text);
+        setRevealedIndices(new Set());
+        if (isScrambling) {
+          setIsScrambling(false);
+        }
+      }, 0);
+      return () => clearTimeout(resetTimer);
+    }
   }, [
     isHovering,
     text,
@@ -180,6 +200,7 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
     sequential,
     revealDirection,
     maxIterations,
+    isScrambling,
   ]);
 
   return (

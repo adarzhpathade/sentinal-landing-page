@@ -6,8 +6,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/layout/Container";
 import ScrambleHover from "@/components/ui/ScrambleHover";
-import { FEATURES_DATA } from "@/data/features";
+import { FEATURES_DATA, type Feature } from "@/data/features";
 import { cn } from "@/utils/cn";
+import { useInView } from "motion/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -90,7 +91,7 @@ export const Features: React.FC<FeaturesProps> = ({ className }) => {
             </div>
 
             <div className="mt-2 font-mono text-[11px] tracking-[0.15em] text-[#FB460D] uppercase sm:text-xs md:mt-0">
-              // FEATURES
+              {"// FEATURES"}
             </div>
           </div>
 
@@ -111,10 +112,9 @@ export const Features: React.FC<FeaturesProps> = ({ className }) => {
 
 Features.displayName = "Features";
 
-const FeatureCard = ({ feature }: { feature: any }) => {
+const FeatureCard = ({ feature }: { feature: Feature }) => {
   const ref = useRef<HTMLDivElement>(null);
   // Match the -10% margin used inside ScrambleHover for perfect sync
-  const { useInView } = require("motion/react");
   const isInView = useInView(ref, { once: true, margin: "-10%" });
   const [isMobile, setIsMobile] = React.useState(false);
 
