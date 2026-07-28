@@ -73,7 +73,7 @@ export const Features: React.FC<FeaturesProps> = ({ className }) => {
       aria-label="Features Section"
     >
       <Container>
-        <div className="w-full max-w-[1400px]">
+        <div className="w-full">
           {/* Header Row */}
           <div
             ref={headerRef}
