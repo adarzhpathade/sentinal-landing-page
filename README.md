@@ -157,7 +157,7 @@ Website Issues:
 https://github.com/adarzhpathade/sentinal-landing-page.git
 
 Application:
-https://github.com/NetPranav/Sentinel-Terminal
+https://github.com/NetPranav/Sentinal-Terminal
 
 ---
 
