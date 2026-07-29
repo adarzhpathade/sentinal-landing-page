@@ -1,36 +1,174 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sentinel Terminal Website
 
-## Getting Started
+<p align="center">
+  <img src="./public/cover.png" alt="Sentinel Terminal" width="120" />
+</p>
 
-First, run the development server:
+<p align="center">
+  <strong>The official landing page for Sentinel Terminal.</strong>
+</p>
+
+<p align="center">
+  Showcasing the vision, features, documentation, and open-source community behind Sentinel Terminal.
+</p>
+
+---
+
+## About
+
+This repository contains the source code for the **official Sentinel Terminal website**.
+
+The website serves as the primary entry point for developers, contributors, and users interested in Sentinel Terminal.
+
+It is designed to provide a polished product experience while directing users to the main open-source project, documentation, releases, and community resources.
+
+> **Note**
+>
+> This repository only contains the website.
+> The Sentinel Terminal application is developed in a separate repository.
+
+---
+
+## Website Features
+
+- Modern responsive landing page
+- Product overview
+- Feature showcase
+- Screenshots
+- Installation guides
+- Documentation links
+- GitHub integration
+- Release information
+- Community & contribution links
+- Contact information
+
+---
+
+## Purpose
+
+The website is intended to:
+
+- Introduce Sentinel Terminal
+- Explain what the project is
+- Showcase product capabilities
+- Provide installation instructions
+- Redirect users to the main GitHub repository
+- Help onboard new contributors
+- Act as the public face of the Sentinel ecosystem
+
+---
+
+## Tech Stack
+
+- React
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Vercel
+
+---
+
+## Local Development
+
+Clone the repository
+
+```bash
+git clone <repository-url>
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build for production
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+We welcome contributions from the community.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You can help by:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Improving the UI/UX
+- Fixing bugs
+- Optimizing performance
+- Improving accessibility
+- Enhancing animations
+- Improving documentation
+- Suggesting new sections
 
-## Deploy on Vercel
+Before making large changes, please open an issue to discuss your proposal.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Reporting Issues
+
+If you discover a problem with the website, please create an Issue in this repository.
+
+For issues related to the Sentinel Terminal application itself, please use the main Sentinel repository.
+
+---
+
+## Project Structure
+
+```text
+src/
+components/
+public/
+app/
+styles/
+hooks/
+lib/
+```
+
+---
+
+## About Sentinel Terminal
+
+Sentinel Terminal is an AI-native terminal that combines natural language understanding, intelligent workflow execution, and secure operating system capabilities into a modern developer experience.
+
+Unlike traditional terminals that only execute commands, Sentinel understands intent and can perform multi-step workflows while maintaining transparency and developer control.
+
+---
+
+## About Magnm
+
+Sentinel Terminal is being built under **Magnm**, an open-source initiative focused on building modern AI-powered developer tools.
+
+---
+
+## Community
+
+Website Issues:
+https://github.com/adarzhpathade/sentinal-landing-page.git
+
+Application:
+https://github.com/NetPranav/Sentinel-Terminal
+
+---
+
+## License
+
+This project is licensed under the same license as the Sentinel ecosystem.
+
+See the LICENSE file for details.
+
+---
+
+<p align="center">
+Built with ❤️ by Magnm
+</p>
