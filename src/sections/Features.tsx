@@ -5,12 +5,14 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/layout/Container";
-import ScrambleHover from "@/components/ui/ScrambleHover";
 import { FEATURES_DATA, type Feature } from "@/data/features";
 import { cn } from "@/utils/cn";
+import ScrambleHover from "@/components/ui/ScrambleHover";
 import { useInView } from "motion/react";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
+}
 
 export interface FeaturesProps {
   className?: string;

@@ -1,39 +1,35 @@
-# Memory — Sentinel How It Works Section & Lint Cleanups
+# Memory — How It Works Section & Scramble Animation Fix
 
-Last updated: 2026-07-28T21:02:00+05:30
+Last updated: 2026-07-28T21:07:00+05:30
 
 ## What was built
 
-- **How It Works Section (`src/sections/HowItWorks.tsx`, `src/data/howItWorks.ts`)**:
-  - Implemented the complete "How it works" section matching the design system with square dots.
-  - Created a responsive layout: desktop features a horizontal timeline with alternating top/bottom steps, while mobile alternates left/right around a center vertical line.
-  - Applied `ScrambleHover` to all step headings, triggered sequentially on desktop by the GSAP timeline and on-view on mobile.
-- **GSAP Pinned Timeline Animation (`src/sections/HowItWorks.tsx`)**:
-  - Desktop layout pins the section to the top of the viewport (`pin: true`, `end: "+=150%"`) and runs a play-once timeline that draws the line, pops in dots (with 180° rotation), and fades in content.
-  - Mobile timeline slides steps in from the left on view.
+- Refactored `src/sections/HowItWorks.tsx` to feature a pinned GSAP `ScrollTrigger` animation sequence. The line draws, dots pop, and text fades in sequentially — and elements remain visible after completion instead of reverting on scroll.
+- Integrated the `ScrambleHover` effect into `HowItWorks.tsx` so text scrambles in when revealed.
+- Fixed a state-lag bug in `src/components/ui/ScrambleHover.tsx` when `sequential={true}` that was causing the final character of a scrambled string to remain scrambled.
+- Mobile alignment and text sizing adjustments applied to the `HowItWorks` section.
+- Checks (format, lint, build) were run and changes were pushed to the `main` Git branch (commit `0a3b97d`).
 
 ## Decisions made
 
-- **Typographic System**: Chose to use `font-mono` (Geist Mono) for step headings on both desktop and mobile to introduce a technical, terminal-coded contrast to the editorial Aktiv Grotesk section titles.
-- **Timeline Centering**: Centered all step text containers directly above/below the dots with `-translate-x-1/2` and adjusted the desktop padding (`px-8 md:px-24 lg:px-40 xl:px-48`) to keep edge elements from clipping the viewport.
-- **Play-Once Pinned Animation**: Designed the scroll-based animation to play once upon entering rather than scrubbing. This ensures that the timeline and text remain fully visible after the animation completes and during reverse scroll.
+- Unlinked the `HowItWorks` timeline from direct scroll scrub progress, opting for a play-once pinned timeline instead so that elements stay visible persistently.
+- Handled React state batching and ref synchronicity inside the `ScrambleHover`'s `setInterval` by manually advancing and checking the updated `revealedIndicesRef` synchronously to ensure clean text resolution.
 
 ## Problems solved
 
-- **ESLint & TS Cleanup**: Resolved all 14 linting errors and warnings. Fixed React hook set-state-in-effect errors inside `ScrambleHover` using deferred `setTimeout` state updates, replaced `any` casts in `BlurText` with `HTMLMotionProps` types, and cleaned up unused destructured variables in `heroTimeline.ts`.
-- **JSX Comment Node issue**: Fixed the `react/jsx-no-comment-textnodes` lint error in `Features.tsx` and `HowItWorks.tsx` by wrapping the raw `//` comment style process indicators in curly braces `{"// PROCESS"}`.
-- **Timeline Disappearance bug**: Solved the issue where elements vanished after animation completion by removing immediate `gsap.set()` calls on mount and using `tl.fromTo()` within the timeline instead.
+- **Disappearing text in HowItWorks:** Replaced `scrub: 1` with a play-once pinned trigger so the section freezes while animating but stays in the final visual state.
+- **Scramble text spelling error:** Fixed the `ScrambleHover` logic so it explicitly resets `setDisplayText(text)` when all characters are revealed.
 
 ## Current state
 
-- The Hero, Features, and How It Works sections are fully built, highly responsive, and animate beautifully.
-- The project is error-free: `npm run lint` compiles cleanly with zero warnings/errors, and `npm run build` succeeds.
-- All code changes are committed and pushed to the remote `main` branch.
+- The `HowItWorks` section animations are polished and fully working on both desktop and mobile views.
+- The `ScrambleHover` effect works perfectly without leaving random trailing characters.
+- The codebase is clean, formatted, linted, and up to date on `main`.
 
 ## Next session starts with
 
-- Building the next section after "How It Works" based on the design docs and read order in `AGENTS.md`.
+- Moving on to the next major section of the Sentinel landing page, or addressing further design feedback from the user.
 
 ## Open questions
 
-- None. The How It Works section is fully finalized, verified, and deployed.
+- None at the moment. Wait for the user's next design or feature request.

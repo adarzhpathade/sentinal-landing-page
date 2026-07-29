@@ -1,38 +1,71 @@
 "use client";
 
-import React, { useRef, useState, useCallback } from "react";
+import React, { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/layout/Container";
-import { HOW_IT_WORKS_DATA } from "@/data/howItWorks";
+import { HOW_IT_WORKS_DATA, type TimelineStep } from "@/data/howItWorks";
 import { cn } from "@/utils/cn";
 import ScrambleHover from "@/components/ui/ScrambleHover";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
+}
 
 export interface HowItWorksProps {
   className?: string;
 }
+
+const TimelineContent = ({
+  step,
+  isTop,
+}: {
+  step: TimelineStep;
+  isTop: boolean;
+}) => {
+  const [isActive, setIsActive] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const handleTrigger = () => setIsActive(true);
+    el.addEventListener("scrambleStart", handleTrigger);
+    return () => el.removeEventListener("scrambleStart", handleTrigger);
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "timeline-content absolute left-[10px] flex w-max max-w-[280px] -translate-x-1/2 flex-col items-center text-center",
+        isTop ? "bottom-full pb-[24px]" : "top-full pt-[24px]"
+      )}
+    >
+      <h3 className="font-mono text-[20px] leading-tight font-normal text-[#141314]">
+        <ScrambleHover
+          text={step.title}
+          sequential={true}
+          scrambledClassName="text-[#FB460D]"
+          customHoverState={isActive}
+          className="font-mono text-[20px] leading-tight font-normal text-[#141314]"
+        />
+      </h3>
+      {step.description && (
+        <p className="mt-2 text-[12px] leading-relaxed whitespace-pre-line text-[#141314]/50">
+          {step.description}
+        </p>
+      )}
+    </div>
+  );
+};
 
 export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headerRef = useRef<HTMLDivElement | null>(null);
   const desktopTimelineRef = useRef<HTMLDivElement | null>(null);
   const mobileTimelineRef = useRef<HTMLDivElement | null>(null);
-
-  // Track which steps have their scramble active (by index)
-  const [activeScrambles, setActiveScrambles] = useState<Set<number>>(
-    new Set()
-  );
-
-  const triggerScramble = useCallback((index: number) => {
-    setActiveScrambles((prev) => {
-      const next = new Set(prev);
-      next.add(index);
-      return next;
-    });
-  }, []);
 
   useGSAP(
     () => {
@@ -115,40 +148,72 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
                 opacity: 1,
                 ease: "power2.out",
                 duration: 0.4,
-                onStart: () => triggerScramble(i),
+                onStart: () => {
+                  content.dispatchEvent(new CustomEvent("scrambleStart"));
+                },
               },
               0.4 + i * 0.5
             );
           });
 
-          // Pin the section and play the timeline once when it enters
+          // Trigger the animation when the header reaches 70% down the viewport
+          ScrollTrigger.create({
+            trigger: headerRef.current,
+            start: "top 70%",
+            onEnter: () => tl.play(),
+          });
+
+          // Pin the section when it reaches the top
           ScrollTrigger.create({
             trigger: sectionRef.current,
             start: "top top",
             end: "+=150%",
             pin: true,
             anticipatePin: 1,
-            onEnter: () => tl.play(),
           });
         }
       }
 
-      // Mobile: each step slides in from the left on scroll
+      // Mobile: animate dot and content separately
       if (mobileTimelineRef.current) {
         const nodes =
           mobileTimelineRef.current.querySelectorAll(".mobile-node");
         nodes.forEach((node) => {
-          gsap.from(node, {
-            x: -24,
-            opacity: 0,
-            ease: "power2.out",
-            duration: 0.5,
+          const dot = node.querySelector(".mobile-dot");
+          const content = node.querySelector(".mobile-content");
+          const isLeft = node.classList.contains("flex-row");
+
+          const tl = gsap.timeline({
             scrollTrigger: {
               trigger: node,
               start: "top 85%",
               toggleActions: "play none none reverse",
             },
           });
+
+          if (dot) {
+            tl.fromTo(
+              dot,
+              { xPercent: -50, scale: 0, opacity: 0, rotation: 180 },
+              {
+                xPercent: -50,
+                scale: 1,
+                opacity: 1,
+                rotation: 0,
+                ease: "back.out(2)",
+                duration: 0.4,
+              }
+            );
+          }
+
+          if (content) {
+            tl.fromTo(
+              content,
+              { x: isLeft ? -16 : 16, opacity: 0 },
+              { x: 0, opacity: 1, ease: "power2.out", duration: 0.5 },
+              "-=0.2"
+            );
+          }
         });
       }
     },
@@ -206,29 +271,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
                         <div className="timeline-dot large h-5 w-5 rounded-none bg-[#FB460D]" />
 
                         {/* Content Container */}
-                        <div
-                          className={cn(
-                            "timeline-content absolute left-[10px] flex w-max max-w-[280px] -translate-x-1/2 flex-col items-center text-center",
-                            isTop
-                              ? "bottom-full pb-[24px]"
-                              : "top-full pt-[24px]"
-                          )}
-                        >
-                          <h3 className="font-mono text-[20px] leading-tight font-normal text-[#141314]">
-                            <ScrambleHover
-                              text={step.title}
-                              sequential={true}
-                              scrambledClassName="text-[#FB460D]"
-                              customHoverState={activeScrambles.has(index)}
-                              className="font-mono text-[20px] leading-tight font-normal text-[#141314]"
-                            />
-                          </h3>
-                          {step.description && (
-                            <p className="mt-2 text-[12px] leading-relaxed whitespace-pre-line text-[#141314]/50">
-                              {step.description}
-                            </p>
-                          )}
-                        </div>
+                        <TimelineContent step={step} isTop={isTop} />
                       </div>
 
                       {/* Small interstitial dot */}
@@ -260,12 +303,12 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
                       )}
                     >
                       {/* Dot on center line */}
-                      <div className="absolute top-1 left-1/2 z-10 h-3 w-3 -translate-x-1/2 rounded-none bg-[#FB460D]" />
+                      <div className="mobile-dot absolute top-1 left-1/2 z-10 h-3 w-3 -translate-x-1/2 rounded-none bg-[#FB460D]" />
 
                       {/* Content */}
                       <div
                         className={cn(
-                          "w-[calc(50%-20px)]",
+                          "mobile-content w-[calc(50%-20px)]",
                           isLeft ? "pr-2 text-right" : "pl-2 text-left"
                         )}
                       >
