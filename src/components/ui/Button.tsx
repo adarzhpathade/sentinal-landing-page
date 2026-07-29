@@ -4,7 +4,7 @@ import React from "react";
 import { cn } from "@/utils/cn";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline";
+  variant?: "primary" | "secondary" | "outline" | "black";
   withSquareIcon?: boolean;
   href?: string;
   children: React.ReactNode;
@@ -38,6 +38,8 @@ export const Button = React.forwardRef<
     const variantStyles = {
       primary:
         "bg-[#FB460D] text-[#141314] hover:bg-[#FF5C26] px-10 py-2 text-xs sm:text-sm tracking-normal uppercase font-mono font-normal",
+      black:
+        "bg-[#141314] text-white hover:bg-[#000000] px-10 py-2 text-xs sm:text-sm tracking-normal uppercase font-mono font-normal",
       secondary:
         "group relative text-white hover:text-white/90 py-1 text-sm sm:text-base font-mono font-normal",
       outline:
@@ -61,9 +63,16 @@ export const Button = React.forwardRef<
       </>
     );
 
-    // If withSquareIcon is enabled for primary buttons (signature two-block CTA layout)
-    if (variant === "primary" && withSquareIcon) {
+    // If withSquareIcon is enabled for primary or black buttons (signature two-block CTA layout)
+    if ((variant === "primary" || variant === "black") && withSquareIcon) {
       const wrapperClasses = cn("inline-flex items-stretch group", className);
+      const isBlack = variant === "black";
+      const iconBgClass = isBlack 
+        ? "bg-[#141314] text-white group-hover:bg-[#000000] hover:bg-[#000000]" 
+        : "bg-[#FB460D] text-[#141314] group-hover:bg-[#FF5C26] hover:bg-[#FF5C26]";
+      const focusRingClass = isBlack
+        ? "focus-visible:ring-[#141314]"
+        : "focus-visible:ring-[#FB460D]";
 
       if (href) {
         return (
@@ -75,7 +84,7 @@ export const Button = React.forwardRef<
           >
             {/* Left Square (Appears on Hover) */}
             <span
-              className="mr-0 flex w-0 items-center justify-center overflow-hidden rounded-none bg-[#FB460D] text-[#141314] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-1 group-hover:w-9 group-hover:bg-[#FF5C26]"
+              className={cn("mr-0 flex w-0 items-center justify-center overflow-hidden rounded-none transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-1 group-hover:w-9", iconBgClass)}
               aria-hidden="true"
             >
               <svg
@@ -100,7 +109,7 @@ export const Button = React.forwardRef<
             <span
               className={cn(
                 baseStyles,
-                variantStyles.primary,
+                variantStyles[variant],
                 "h-full flex-1 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
               )}
             >
@@ -109,7 +118,7 @@ export const Button = React.forwardRef<
 
             {/* Right Square (Disappears on Hover) */}
             <span
-              className="ml-1 flex w-9 items-center justify-center overflow-hidden rounded-none bg-[#FB460D] text-[#141314] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-0 group-hover:w-0 group-hover:bg-[#FF5C26]"
+              className={cn("ml-1 flex w-9 items-center justify-center overflow-hidden rounded-none transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-0 group-hover:w-0", iconBgClass)}
               aria-hidden="true"
             >
               <svg
@@ -138,7 +147,7 @@ export const Button = React.forwardRef<
           {/* Left Square (Appears on Hover) */}
           <button
             type="button"
-            className="mr-0 flex w-0 items-center justify-center overflow-hidden rounded-none bg-[#FB460D] text-[#141314] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-1 group-hover:w-9 hover:bg-[#FF5C26] focus-visible:ring-2 focus-visible:ring-[#FB460D] focus-visible:outline-none"
+            className={cn("mr-0 flex w-0 items-center justify-center overflow-hidden rounded-none transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-1 group-hover:w-9 focus-visible:ring-2 focus-visible:outline-none", iconBgClass, focusRingClass)}
             disabled={disabled}
             aria-hidden="true"
             tabIndex={-1}
@@ -166,7 +175,7 @@ export const Button = React.forwardRef<
             ref={ref as React.Ref<HTMLButtonElement>}
             className={cn(
               baseStyles,
-              variantStyles.primary,
+              variantStyles[variant],
               "h-full flex-1 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
             )}
             disabled={disabled}
@@ -178,7 +187,7 @@ export const Button = React.forwardRef<
           {/* Right Square (Disappears on Hover) */}
           <button
             type="button"
-            className="ml-1 flex w-9 items-center justify-center overflow-hidden rounded-none bg-[#FB460D] text-[#141314] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-0 group-hover:w-0 hover:bg-[#FF5C26] focus-visible:ring-2 focus-visible:ring-[#FB460D] focus-visible:outline-none"
+            className={cn("ml-1 flex w-9 items-center justify-center overflow-hidden rounded-none transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-0 group-hover:w-0 focus-visible:ring-2 focus-visible:outline-none", iconBgClass, focusRingClass)}
             disabled={disabled}
             aria-hidden="true"
             tabIndex={-1}

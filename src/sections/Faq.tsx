@@ -1,11 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/layout/Container";
 import { FAQ_DATA, type FAQItem } from "@/data/faq";
 import { cn } from "@/utils/cn";
 import { AnimatePresence, motion, useInView } from "motion/react";
 import ScrambleHover from "@/components/ui/ScrambleHover";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
+}
 
 export interface FaqProps {
   className?: string;
@@ -14,7 +21,27 @@ export interface FaqProps {
 export const Faq: React.FC<FaqProps> = ({ className }) => {
   const [openId, setOpenId] = useState<string | null>(null); // Start with none open
   const sectionRef = React.useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
   const isSectionInView = useInView(sectionRef, { once: true, margin: "-10%" });
+
+  // Parallax: subtle upward drift as user scrolls through
+  useGSAP(
+    () => {
+      if (!sectionRef.current || !contentRef.current) return;
+
+      gsap.to(contentRef.current, {
+        yPercent: -3,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    },
+    { scope: sectionRef }
+  );
 
   const toggleOpen = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
@@ -24,13 +51,13 @@ export const Faq: React.FC<FaqProps> = ({ className }) => {
     <section
       ref={sectionRef}
       className={cn(
-        "relative z-20 w-full bg-[#141314] py-16 text-[#EEEEEE] md:py-24",
+        "relative z-20 w-full overflow-hidden bg-[#141314] py-16 text-[#EEEEEE] md:py-24",
         className
       )}
       aria-label="FAQ Section"
     >
       <Container>
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+        <div ref={contentRef} className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           {/* Left Column: Heading */}
           <div className="w-full md:w-1/3">
             <h2 className="font-sans text-[32px] leading-[1] font-normal tracking-tight md:text-[40px] lg:text-[48px]">
@@ -120,7 +147,7 @@ const AccordionItem = ({
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
               transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
-              className="pr-8 pb-4"
+              className="pr-8 pb-4 pl-5"
             >
               <p className="font-sans text-[12px] leading-relaxed text-[rgba(255,255,255,0.6)] md:text-[14px]">
                 {item.answer}

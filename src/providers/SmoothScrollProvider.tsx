@@ -39,6 +39,9 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({
       smoothWheel: true,
     });
 
+    // Expose globally for programmatic scrolling (e.g. footer links)
+    (window as unknown as { lenis: Lenis }).lenis = lenis;
+
     // Synchronize Lenis scroll with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 

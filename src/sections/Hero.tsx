@@ -79,9 +79,9 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
           noise={0.25}
           blindCount={24}
           blindMinWidth={15}
-          spotlightRadius={0.5}
-          spotlightSoftness={1.5}
-          spotlightOpacity={0.4}
+          spotlightRadius={1.5}
+          spotlightSoftness={1.0}
+          spotlightOpacity={0.2}
           mouseDampening={0.15}
           distortAmount={0}
           shineDirection="left"

@@ -22,6 +22,7 @@ export const Features: React.FC<FeaturesProps> = ({ className }) => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headerRef = useRef<HTMLDivElement | null>(null);
   const gridRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(
     () => {
@@ -59,6 +60,20 @@ export const Features: React.FC<FeaturesProps> = ({ className }) => {
         "-=0.4"
       );
 
+      // Parallax: subtle upward drift as user scrolls through
+      if (contentRef.current) {
+        gsap.to(contentRef.current, {
+          yPercent: -3,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+
       return () => {
         ScrollTrigger.getAll().forEach((t) => t.kill());
       };
@@ -70,13 +85,13 @@ export const Features: React.FC<FeaturesProps> = ({ className }) => {
     <section
       ref={sectionRef}
       className={cn(
-        "relative z-20 w-full bg-[#F4F4F4] py-16 text-[#141314] sm:py-24 md:py-32",
+        "relative z-20 w-full overflow-hidden bg-[#F4F4F4] py-16 text-[#141314] sm:py-24 md:py-32",
         className
       )}
       aria-label="Features Section"
     >
       <Container>
-        <div className="w-full">
+        <div ref={contentRef} className="w-full">
           {/* Header Row */}
           <div
             ref={headerRef}
@@ -164,7 +179,14 @@ const FeatureCard = ({ feature }: { feature: Feature }) => {
         </h3>
       </div>
       <div className="mb-4 h-[1px] w-full bg-[#141314]/10" />
-      <p className="max-w-[320px] font-sans text-[12px] leading-relaxed font-normal whitespace-pre-line text-[#141314]/50 sm:text-[13px]">
+      <p
+        className={cn(
+          "max-w-[320px] font-sans text-[12px] leading-relaxed font-normal whitespace-pre-line text-[#141314]/50 sm:text-[13px] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+          triggerMobile
+            ? "translate-x-[24px]"
+            : "translate-x-0 md:group-hover:translate-x-[24px]"
+        )}
+      >
         {feature.description}
       </p>
     </div>

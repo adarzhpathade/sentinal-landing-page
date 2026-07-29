@@ -66,6 +66,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
   const headerRef = useRef<HTMLDivElement | null>(null);
   const desktopTimelineRef = useRef<HTMLDivElement | null>(null);
   const mobileTimelineRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(
     () => {
@@ -165,6 +166,20 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
         }
       }
 
+      // Parallax: subtle upward drift as user scrolls through
+      if (contentRef.current) {
+        gsap.to(contentRef.current, {
+          yPercent: -3,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+
       // Mobile: animate dot and content separately
       if (mobileTimelineRef.current) {
         const nodes =
@@ -215,13 +230,13 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
     <section
       ref={sectionRef}
       className={cn(
-        "relative z-20 w-full bg-[#F4F4F4] pb-24 text-[#141314] sm:pb-32 md:pb-40",
+        "relative z-20 w-full overflow-hidden bg-[#F4F4F4] pb-24 text-[#141314] sm:pb-32 md:pb-40",
         className
       )}
       aria-label="How it works Section"
     >
       <Container>
-        <div className="w-full">
+        <div ref={contentRef} className="w-full">
           {/* Header Row */}
           <div
             ref={headerRef}
