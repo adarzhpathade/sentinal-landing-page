@@ -1,6 +1,7 @@
 import { Hero } from "@/sections/Hero";
 import { Features } from "@/sections/Features";
 import { HowItWorks } from "@/sections/HowItWorks";
+import { Faq } from "@/sections/Faq";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,9 @@ export default function HomePage() {
 
       {/* How it works section */}
       <HowItWorks />
+
+      {/* FAQ section */}
+      <Faq />
     </main>
   );
 }

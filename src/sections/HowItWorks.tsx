@@ -162,15 +162,6 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
             start: "top 70%",
             onEnter: () => tl.play(),
           });
-
-          // Pin the section when it reaches the top
-          ScrollTrigger.create({
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "+=150%",
-            pin: true,
-            anticipatePin: 1,
-          });
         }
       }
 
@@ -253,7 +244,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
           {/* Desktop Timeline */}
           <div
             ref={desktopTimelineRef}
-            className="relative mt-32 mb-48 hidden w-full md:mt-48 md:mb-72 md:block"
+            className="relative mt-32 mb-16 hidden w-full md:mt-48 md:mb-24 md:block"
           >
             <div className="w-full px-8 md:px-24 lg:px-40 xl:px-48">
               <div className="relative flex w-full items-center justify-between">
