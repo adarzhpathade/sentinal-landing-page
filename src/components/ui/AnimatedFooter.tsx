@@ -371,8 +371,18 @@ export function AnimatedFooter({
       const now = Date.now();
       for (const hand of hands) renderHand(hand, now);
 
-      drift.x += (pointer.x - drift.x) * PARALLAX_EASE;
-      drift.y += (pointer.y - drift.y) * PARALLAX_EASE;
+      let targetX = pointer.x;
+      let targetY = pointer.y;
+
+      // Add gentle idle sway exclusively for mobile view
+      if (window.innerWidth < 768) {
+        const time = now * 0.001;
+        targetX += Math.sin(time * 0.8) * 12;
+        targetY += Math.cos(time * 0.6) * 8;
+      }
+
+      drift.x += (targetX - drift.x) * PARALLAX_EASE;
+      drift.y += (targetY - drift.y) * PARALLAX_EASE;
       const strength = liveRef.current.parallaxStrength;
       const scale = 1 + (strength * 2) / 200;
 
@@ -496,17 +506,17 @@ export function AnimatedFooter({
       style={{ color: textColor, containerType: "inline-size" }}
     >
       {/* ASCII hands — behind all content */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-between opacity-60">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-between opacity-60 overflow-hidden">
         <div
           ref={leftWrapRef}
-          className="relative w-2/5 min-w-[200px] will-change-transform"
+          className="relative w-2/5 md:min-w-[200px] will-change-transform"
           style={{ transform: `translateX(-${offEdge}%)` }}
         >
           <canvas ref={leftCanvasRef} className="block h-auto w-full" />
         </div>
         <div
           ref={rightWrapRef}
-          className="relative w-2/5 min-w-[200px] will-change-transform"
+          className="relative w-2/5 md:min-w-[200px] will-change-transform"
           style={{ transform: `translateX(${offEdge}%)` }}
         >
           <canvas ref={rightCanvasRef} className="block h-auto w-full" />

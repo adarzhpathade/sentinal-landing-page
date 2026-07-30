@@ -63,6 +63,25 @@ export const Button = React.forwardRef<
       </>
     );
 
+    const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (href && href.startsWith("#")) {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetEl = document.getElementById(targetId);
+        
+        const l = (window as unknown as { lenis?: { scrollTo: (target: HTMLElement | string | number, opts: { duration: number; easing: (t: number) => number }) => void } }).lenis;
+        
+        if (l && targetEl) {
+          l.scrollTo(targetEl, { duration: 2.5, easing: (t: number) => 1 - Math.pow(1 - t, 4) });
+        } else if (targetEl) {
+          targetEl.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+      if (props.onClick) {
+        (props.onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>)(e);
+      }
+    };
+
     // If withSquareIcon is enabled for primary or black buttons (signature two-block CTA layout)
     if ((variant === "primary" || variant === "black") && withSquareIcon) {
       const wrapperClasses = cn("inline-flex items-stretch group", className);
@@ -81,6 +100,7 @@ export const Button = React.forwardRef<
             ref={ref as React.Ref<HTMLAnchorElement>}
             className={wrapperClasses}
             aria-label={typeof children === "string" ? children : "Action"}
+            onClick={handleAnchorClick}
           >
             {/* Left Square (Appears on Hover) */}
             <span
@@ -219,6 +239,7 @@ export const Button = React.forwardRef<
           href={href}
           ref={ref as React.Ref<HTMLAnchorElement>}
           className={cn(baseStyles, variantStyles[variant], className)}
+          onClick={handleAnchorClick}
         >
           {content}
         </a>

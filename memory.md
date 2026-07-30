@@ -1,32 +1,31 @@
-# Memory — Common Questions (FAQ) Section
+# Memory — Animated Footer & Parallax Enhancements
 
 Last updated: 2026-07-29
 
 ## What was built
 
-- Created the `Common Questions` section in `src/sections/Faq.tsx` and the underlying data schema in `src/data/faq.ts`.
-- Integrated `ScrambleHover` to trigger a synchronized scramble text effect across all questions exactly when the section scrolls into view.
-- Added a custom stagger blur-up (`filter: blur`) animation to the answers when the accordion expands.
-- Adjusted vertical spacing below the `HowItWorks` section to seamlessly connect into the FAQ.
+- Built out the `AnimatedFooter.tsx` with a responsive layout: ASCII art banner is presented on desktop, while mobile receives a cleanly structured standard layout.
+- Integrated smooth scrolling functionality into the footer's internal anchor links using `Lenis` (with a native `scrollIntoView` fallback).
+- Replaced placeholder emails and legal links with developer GitHub credits and Source Code links, applying a sleek animated underline hover effect to them.
+- Added a subtle, cohesive GSAP ScrollTrigger parallax drift (`yPercent: -3`, scrubbed) to the inner content of all main sections (`Features`, `HowItWorks`, `Faq`, `Download`) to create a premium sense of depth while scrolling.
 
 ## Decisions made
 
-- Decoupled hover states from the text scramble effect to keep interactions snappy. Expanding a question instantly swaps the text color natively without re-triggering the scramble animation.
-- Modified the FAQ accordion to default to a completely collapsed state (`openId: null`).
-- Sped up the text scramble by explicitly passing `scrambleSpeed={20}`.
+- Applied the GSAP scrub parallax effect individually inside each section's component (using `contentRef` wrappers) rather than applying a blanket parallax over the entire page layout. This preserved existing complex clip-path reveal mechanisms and native layout animations.
 
 ## Problems solved
 
-- Resolved an issue where expanding questions would trigger a visual re-scramble of the text. Tied the scramble trigger strictly to the `isSectionInView` scroll trigger instead of the `customHoverState`.
+- Fixed footer overlapping and layout issues on mobile viewports.
+- Resolved TypeScript ESLint errors relating to `any` type casting on the globally attached `window.lenis` instance.
 
 ## Current state
 
-- The `Common Questions` section is fully built, cleanly animated, and responsive.
-- Code has been formatted, linted, successfully built (`next build`), and pushed to the `main` branch.
+- The landing page layout is complete, fully animated, responsive, and features subtle parallax depth across all sections.
+- Code has been linted cleanly (`npm run lint`), compiled successfully (`npm run build`), and pushed to the remote `main` branch.
 
 ## Next session starts with
 
-- Moving on to the next major component or section of the Sentinel landing page (e.g., CTA, Footer, or Pricing) depending on the next design spec provided.
+- Reviewing the full end-to-end site experience for any final design polish or moving on to deployment/marketing tasks.
 
 ## Open questions
 
