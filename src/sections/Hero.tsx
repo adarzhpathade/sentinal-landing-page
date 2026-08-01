@@ -4,7 +4,6 @@ import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { HERO_DATA } from "@/data/hero";
 import { Container } from "@/components/layout/Container";
-import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/Button";
 import { BlurText } from "@/components/ui/BlurText";
 import { GradientBlinds } from "@/components/ui/GradientBlinds";
@@ -90,8 +89,7 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
         />
       </div>
 
-      {/* Top Navigation Bar */}
-      <Navbar ref={navRef} />
+      {/* Top Navigation Bar is now global in page.tsx */}
 
       {/* Parallax Wrapper for content to scroll down smoothly */}
       <div
