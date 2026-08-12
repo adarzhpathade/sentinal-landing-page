@@ -10,7 +10,6 @@ import { GradientBlinds } from "@/components/ui/GradientBlinds";
 import ScrambleHover from "@/components/ui/ScrambleHover";
 import { createHeroTimeline } from "@/animations/heroTimeline";
 import { cn } from "@/utils/cn";
-import { useInView } from "motion/react";
 
 export interface HeroProps {
   className?: string;
@@ -30,8 +29,6 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
   const bottomBarRef = useRef<HTMLDivElement | null>(null);
   const bgRef = useRef<HTMLDivElement | null>(null);
   const parallaxRef = useRef<HTMLDivElement | null>(null);
-  
-  const isInView = useInView(sectionRef);
 
   useGSAP(
     () => {
@@ -88,7 +85,6 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
           distortAmount={0}
           shineDirection="left"
           mixBlendMode="lighten"
-          paused={!isInView}
           className="pointer-events-auto absolute inset-0 z-0"
         />
       </div>

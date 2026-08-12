@@ -8,11 +8,11 @@ import { Copy, Check } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 import { Navbar } from "@/components/layout/Navbar";
+import AnimatedFooter from "@/components/ui/AnimatedFooter";
 import { Container } from "@/components/layout/Container";
+import { FeatureCard } from "@/sections/Features";
 import ScrambleHover from "@/components/ui/ScrambleHover";
 import { Button } from "@/components/ui/Button";
-import { AnimatedFooter } from "@/components/ui/AnimatedFooter";
-import { FeatureCard } from "@/sections/Features";
 
 const CliCommandBox = ({ command }: { command: string }) => {
   const [copied, setCopied] = useState(false);

@@ -367,20 +367,7 @@ export function AnimatedFooter({
 
     // ── Unified render loop: ASCII + parallax + reveal curtain ───────────
     let rafId = 0;
-    const isVisibleRef = { current: true };
-    const perfObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        isVisibleRef.current = e.isIntersecting;
-      });
-    }, { rootMargin: "200px" });
-    perfObserver.observe(root);
-
     const frame = () => {
-      if (!isVisibleRef.current) {
-        rafId = requestAnimationFrame(frame);
-        return;
-      }
-      
       const now = Date.now();
       for (const hand of hands) renderHand(hand, now);
 
@@ -497,7 +484,6 @@ export function AnimatedFooter({
       cancelAnimationFrame(rafId);
       window.removeEventListener("mousemove", onMouseMove);
       observer?.disconnect();
-      perfObserver.disconnect();
       gsap.killTweensOf([curtain, ...chars]);
     };
     // Rebuild only when a structural input changes; live values flow via liveRef.

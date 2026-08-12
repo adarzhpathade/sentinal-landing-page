@@ -94,8 +94,7 @@ export default function DocsLayout({
   // Load theme from localStorage on mount and sync with document
   useEffect(() => {
     const isLight = document.documentElement.classList.contains("light-mode");
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsLightMode(isLight);
+    setTimeout(() => setIsLightMode(isLight), 0);
   }, []);
 
   const toggleTheme = () => {
@@ -113,8 +112,7 @@ export default function DocsLayout({
 
   // Close mobile menu on route change
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsMobileMenuOpen(false);
+    setTimeout(() => setIsMobileMenuOpen(false), 0);
   }, [pathname]);
 
   useGSAP(() => {

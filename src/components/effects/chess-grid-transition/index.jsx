@@ -18,6 +18,8 @@ export default function ChessGridTransition({ children }) {
   const gridRef = useRef(null)
   const bgRef = useRef(null)
 
+  const [mounted, setMounted] = useState(false)
+
   const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
 
@@ -99,6 +101,8 @@ export default function ChessGridTransition({ children }) {
           const colIndex = i % cols
           gsap.set(cell, { xPercent: -(colIndex + 2) * 100 })
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        setTimeout(() => setMounted(true), 0)
         return
       }
 
@@ -130,8 +134,9 @@ export default function ChessGridTransition({ children }) {
         gsap.set(cell, { xPercent: -(colIndex + 2) * 100 })
       })
     }
-
-  }, [rows, pathname])
+    setMounted(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rows])
 
   const totalCells = cols * rows
 
@@ -206,7 +211,7 @@ export default function ChessGridTransition({ children }) {
                 height: `calc(100vh / ${rows} + ${overlap}px)`,
                 left: `calc(${colIndex} * (100vw / ${cols}) * ${isMobile ? 1.6 : 1} - ${overlap / 2}px)`,
                 top: `calc(${rowIndex} * (100vh / ${rows}) - ${overlap / 2}px)`,
-                transform: pathname?.startsWith('/docs') ? `translateX(${-(colIndex + 2) * 100}%)` : 'none',
+                transform: (!mounted && pathname?.startsWith('/docs')) ? `translateX(${-(colIndex + 2) * 100}%)` : undefined,
               }}
             ></span>
           )
