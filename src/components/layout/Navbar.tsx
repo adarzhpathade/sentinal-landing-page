@@ -10,6 +10,7 @@ import { cn } from "@/utils/cn";
 
 export interface NavbarProps {
   className?: string;
+  theme?: "dark" | "light";
 }
 
 /**
@@ -18,7 +19,7 @@ export interface NavbarProps {
  * Becomes sticky and forms a background box on scroll.
  */
 export const Navbar = forwardRef<HTMLElement, NavbarProps>(
-  ({ className }, forwardedRef) => {
+  ({ className, theme = "dark" }, forwardedRef) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isLightMode, setIsLightMode] = useState(false);
     const [isHidden, setIsHidden] = useState(false);
@@ -80,18 +81,20 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
         setIsScrolled(window.scrollY > 20);
 
         // Check if navbar is over a light theme section
-        const lightSections = ["features", "how-it-works", "download"];
-        let overLight = false;
-        lightSections.forEach((id) => {
-          const el = document.getElementById(id);
-          if (el) {
-            const rect = el.getBoundingClientRect();
-            // Navbar is ~80px tall. If section top is above 80 and bottom below 0, it's intersecting
-            if (rect.top <= 80 && rect.bottom >= 0) {
-              overLight = true;
+        let overLight = theme === "light";
+        if (theme !== "light") {
+          const lightSections = ["features", "how-it-works", "download"];
+          lightSections.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) {
+              const rect = el.getBoundingClientRect();
+              // Navbar is ~80px tall. If section top is above 80 and bottom below 0, it's intersecting
+              if (rect.top <= 80 && rect.bottom >= 0) {
+                overLight = true;
+              }
             }
-          }
-        });
+          });
+        }
         setIsLightMode(overLight);
 
         // Check if footer is fully revealed (bottom of the page reached)
@@ -108,7 +111,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
       handleScroll();
 
       return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [theme]);
 
     const isExpandedPill = isScrolled || isOpen || isAnimating;
 
@@ -129,9 +132,10 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
           <div className="relative flex w-full items-center justify-between">
             {/* Left: Brand Wordmark */}
             <a
-              href="#"
+              href={NAVIGATION_DATA.brandUrl || "/"}
               className={cn(
-                "pointer-events-auto font-sans text-xl font-bold tracking-tight text-white transition-all duration-500 md:text-2xl",
+                "pointer-events-auto font-sans text-xl font-bold tracking-tight transition-all duration-500 md:text-2xl",
+                theme === "light" ? "text-black" : "text-white",
                 isExpandedPill
                   ? "pointer-events-none -translate-x-4 opacity-0"
                   : "translate-x-0 opacity-100"
@@ -165,7 +169,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                             ? "bg-[#d5d5d5] text-[#141314] hover:text-[#141314]/70"
                             : "bg-[#262626] text-white/90 hover:text-white"
                         )
-                      : "bg-transparent px-0 py-2 text-white/90 hover:text-white"
+                      : cn("bg-transparent px-0 py-2", theme === "light" ? "text-black hover:text-black/70" : "text-white/90 hover:text-white")
                   )}
                   aria-label="Toggle Navigation Menu"
                 >
@@ -183,14 +187,14 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                     <span
                       className={cn(
                         "h-[2px] w-full transition-all duration-200 group-hover:bg-[#FB460D]",
-                        isExpandedPill && isLightMode ? "bg-[#141314]" : "bg-white",
+                        (isExpandedPill && isLightMode) || (theme === "light" && !isExpandedPill) ? "bg-[#141314]" : "bg-white",
                         isOpen ? "translate-y-[2.5px] rotate-45" : ""
                       )}
                     />
                     <span
                       className={cn(
                         "h-[2px] w-full transition-all duration-200 group-hover:bg-[#FB460D]",
-                        isExpandedPill && isLightMode ? "bg-[#141314]" : "bg-white",
+                        (isExpandedPill && isLightMode) || (theme === "light" && !isExpandedPill) ? "bg-[#141314]" : "bg-white",
                         isOpen ? "-translate-y-[2.5px] -rotate-45" : ""
                       )}
                     />

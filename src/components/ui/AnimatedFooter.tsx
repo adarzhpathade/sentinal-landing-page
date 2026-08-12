@@ -367,7 +367,20 @@ export function AnimatedFooter({
 
     // ── Unified render loop: ASCII + parallax + reveal curtain ───────────
     let rafId = 0;
+    const isVisibleRef = { current: true };
+    const perfObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        isVisibleRef.current = e.isIntersecting;
+      });
+    }, { rootMargin: "200px" });
+    perfObserver.observe(root);
+
     const frame = () => {
+      if (!isVisibleRef.current) {
+        rafId = requestAnimationFrame(frame);
+        return;
+      }
+      
       const now = Date.now();
       for (const hand of hands) renderHand(hand, now);
 
@@ -404,24 +417,28 @@ export function AnimatedFooter({
 
     const animateIn = () => {
       gsap.to(curtain, { offset: 0, duration: 1, ease: "power3.out", overwrite: true });
-      gsap.to(chars, {
-        yPercent: 0,
-        duration: 1,
-        ease: "power3.out",
-        stagger: { each: 0.04, from: "center" },
-        overwrite: true,
-      });
+      if (chars.length > 0) {
+        gsap.to(chars, {
+          yPercent: 0,
+          duration: 1,
+          ease: "power3.out",
+          stagger: { each: 0.04, from: "center" },
+          overwrite: true,
+        });
+      }
     };
 
     const animateOut = () => {
       gsap.to(curtain, { offset: 125, duration: 0.4, ease: "power2.in", overwrite: true });
-      gsap.to(chars, {
-        yPercent: 125,
-        duration: 0.4,
-        ease: "power2.in",
-        stagger: { each: 0.01, from: "center" },
-        overwrite: true,
-      });
+      if (chars.length > 0) {
+        gsap.to(chars, {
+          yPercent: 125,
+          duration: 0.4,
+          ease: "power2.in",
+          stagger: { each: 0.01, from: "center" },
+          overwrite: true,
+        });
+      }
     };
 
     // Publish for the controlled-`revealed` effect.
@@ -429,10 +446,14 @@ export function AnimatedFooter({
     animateOutRef.current = animateOut;
 
     const maskAll = () => {
-      gsap.set(chars, { yPercent: 125 });
+      if (chars.length > 0) {
+        gsap.set(chars, { yPercent: 125 });
+      }
     };
     const showAll = () => {
-      gsap.set(chars, { yPercent: 0 });
+      if (chars.length > 0) {
+        gsap.set(chars, { yPercent: 0 });
+      }
     };
 
     let observer: IntersectionObserver | null = null;
@@ -476,6 +497,7 @@ export function AnimatedFooter({
       cancelAnimationFrame(rafId);
       window.removeEventListener("mousemove", onMouseMove);
       observer?.disconnect();
+      perfObserver.disconnect();
       gsap.killTweensOf([curtain, ...chars]);
     };
     // Rebuild only when a structural input changes; live values flow via liveRef.
@@ -530,26 +552,36 @@ export function AnimatedFooter({
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 w-full">
           {/* Left column — Nav links */}
           <div className="hidden md:flex flex-col gap-3 uppercase">
-            <a href="#home" onClick={(e) => { e.preventDefault(); const l = (window as unknown as { lenis?: { scrollTo: (target: string | number, opts: { duration: number; easing: (t: number) => number }) => void } }).lenis; if (l) l.scrollTo(0, { duration: 2.5, easing: (t: number) => 1 - Math.pow(1 - t, 4) }); else window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="group flex items-center hover:text-white transition-colors w-fit">
-              <div className="h-2 overflow-hidden bg-[#FB460D] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] mr-0 w-0 group-hover:mr-3 group-hover:w-2" />
-              HOME
-            </a>
-            <a href="#features" onClick={(e) => { e.preventDefault(); const l = (window as unknown as { lenis?: { scrollTo: (target: string | number, opts: { duration: number; easing: (t: number) => number }) => void } }).lenis; if (l) l.scrollTo('#features', { duration: 2.5, easing: (t: number) => 1 - Math.pow(1 - t, 4) }); else document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' }); }} className="group flex items-center hover:text-white transition-colors w-fit">
-              <div className="h-2 overflow-hidden bg-[#FB460D] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] mr-0 w-0 group-hover:mr-3 group-hover:w-2" />
-              FEATURES
-            </a>
-            <a href="#how-it-works" onClick={(e) => { e.preventDefault(); const l = (window as unknown as { lenis?: { scrollTo: (target: string | number, opts: { duration: number; easing: (t: number) => number }) => void } }).lenis; if (l) l.scrollTo('#how-it-works', { duration: 2.5, easing: (t: number) => 1 - Math.pow(1 - t, 4) }); else document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' }); }} className="group flex items-center hover:text-white transition-colors w-fit">
-              <div className="h-2 overflow-hidden bg-[#FB460D] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] mr-0 w-0 group-hover:mr-3 group-hover:w-2" />
-              HOW IT WORKS
-            </a>
-            <a href="#faq" onClick={(e) => { e.preventDefault(); const l = (window as unknown as { lenis?: { scrollTo: (target: string | number, opts: { duration: number; easing: (t: number) => number }) => void } }).lenis; if (l) l.scrollTo('#faq', { duration: 2.5, easing: (t: number) => 1 - Math.pow(1 - t, 4) }); else document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }); }} className="group flex items-center hover:text-white transition-colors w-fit">
-              <div className="h-2 overflow-hidden bg-[#FB460D] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] mr-0 w-0 group-hover:mr-3 group-hover:w-2" />
-              FAQ
-            </a>
-            <a href="#download" onClick={(e) => { e.preventDefault(); const l = (window as unknown as { lenis?: { scrollTo: (target: string | number, opts: { duration: number; easing: (t: number) => number }) => void } }).lenis; if (l) l.scrollTo('#download', { duration: 2.5, easing: (t: number) => 1 - Math.pow(1 - t, 4) }); else document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' }); }} className="group flex items-center hover:text-white transition-colors w-fit">
-              <div className="h-2 overflow-hidden bg-[#FB460D] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] mr-0 w-0 group-hover:mr-3 group-hover:w-2" />
-              DOWNLOAD
-            </a>
+            {[
+              { id: "home", label: "HOME", href: "/" },
+              { id: "features", label: "FEATURES", href: "/#features" },
+              { id: "how-it-works", label: "HOW IT WORKS", href: "/#how-it-works" },
+              { id: "faq", label: "FAQ", href: "/#faq" },
+              { id: "download", label: "DOWNLOAD", href: "/download" },
+            ].map((link) => (
+              <a 
+                key={link.id} 
+                href={link.href} 
+                onClick={(e) => { 
+                  if (link.href.startsWith("/#") || link.href === "/") {
+                    if (window.location.pathname === "/") {
+                      e.preventDefault(); 
+                      const target = link.href === "/" ? 0 : link.href.replace("/", "");
+                      const l = (window as unknown as { lenis?: { scrollTo: (target: string | number, opts: { duration: number; easing: (t: number) => number }) => void } }).lenis; 
+                      if (l) l.scrollTo(target, { duration: 2.5, easing: (t: number) => 1 - Math.pow(1 - t, 4) }); 
+                      else {
+                        if (target === 0) window.scrollTo({ top: 0, behavior: 'smooth' });
+                        else document.querySelector(target as string)?.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }
+                  }
+                }} 
+                className="group flex items-center hover:text-white transition-colors w-fit"
+              >
+                <div className="h-2 overflow-hidden bg-[#FB460D] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] mr-0 w-0 group-hover:mr-3 group-hover:w-2" />
+                {link.label}
+              </a>
+            ))}
           </div>
 
           {/* Center column — Copyright */}
@@ -578,7 +610,7 @@ export function AnimatedFooter({
             </a>
             <div className="h-4" />
             <span className="text-[#ffffff]/30 font-semibold tracking-widest uppercase text-[10px] mb-1">Source Code</span>
-            <a href="https://github.com/NetPranav/Sentinal-Terminal" target="_blank" rel="noopener noreferrer" className="group relative hover:text-white transition-colors pb-[4px] w-fit">
+            <a href="https://github.com/NetPranav/Sentinel-Terminal" target="_blank" rel="noopener noreferrer" className="group relative hover:text-white transition-colors pb-[4px] w-fit">
               <span>GITHUB REPOSITORY</span>
               <span className="absolute bottom-0 left-0 h-[1px] w-full overflow-hidden" aria-hidden="true">
                 <span className="absolute inset-0 bg-[#ffffff]/20 transition-transform delay-[240ms] duration-300 ease-out group-hover:translate-x-full group-hover:delay-0" />

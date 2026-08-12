@@ -1,32 +1,30 @@
-# Memory — Animated Footer & Parallax Enhancements
+# Memory — Sentinel Documentation & Performance Polish
 
-Last updated: 2026-07-29
+Last updated: 2026-08-12
 
 ## What was built
-
-- Built out the `AnimatedFooter.tsx` with a responsive layout: ASCII art banner is presented on desktop, while mobile receives a cleanly structured standard layout.
-- Integrated smooth scrolling functionality into the footer's internal anchor links using `Lenis` (with a native `scrollIntoView` fallback).
-- Replaced placeholder emails and legal links with developer GitHub credits and Source Code links, applying a sleek animated underline hover effect to them.
-- Added a subtle, cohesive GSAP ScrollTrigger parallax drift (`yPercent: -3`, scrubbed) to the inner content of all main sections (`Features`, `HowItWorks`, `Faq`, `Download`) to create a premium sense of depth while scrolling.
+- Fixed "Sentinal" typos globally to "Sentinel" (Navigation, Hero text, GitHub repo links, Mobile Docs Topbar).
+- Enhanced the `Button` component to support multiple square icons (`squareIconType`); updated the Docs layout to use a minimalist "Home" icon instead of the default download arrow.
+- Tightened the spacing in the Docs navigation menu for a more compact and readable layout.
+- Solved Light Mode Flash of Unstyled Content (FOUC) by injecting a blocking theme script in the root `<head>` and persisting state to `localStorage`.
+- Overhauled React & GSAP performance in the Docs section:
+  - Extracted and memoized `SidebarContent` in `layout.tsx` to prevent massive DOM thrashing on state changes.
+  - Scoped all `useGSAP` hooks properly and removed manual DOM queries across all documentation pages.
 
 ## Decisions made
-
-- Applied the GSAP scrub parallax effect individually inside each section's component (using `contentRef` wrappers) rather than applying a blanket parallax over the entire page layout. This preserved existing complex clip-path reveal mechanisms and native layout animations.
+- Kept the theme toggle localized to the Docs section via `light-mode` class injected on `<html>`, allowing the landing page to remain safely dark while fully supporting light mode in the documentation.
+- Extracted `SidebarContent` outside of `DocsLayout` into a `React.memo` component rather than refactoring the entire layout routing logic.
 
 ## Problems solved
-
-- Fixed footer overlapping and layout issues on mobile viewports.
-- Resolved TypeScript ESLint errors relating to `any` type casting on the globally attached `window.lenis` instance.
+- **FOUC on Refresh**: Fixed the jarring dark-to-light flash on page reload by moving the `light-mode` class directly to `document.documentElement` before React even hydrates.
+- **Layout Thrashing**: Fixed an issue where the entire Docs sidebar was unmounting/remounting on every theme or menu toggle due to an inline component definition.
 
 ## Current state
-
-- The landing page layout is complete, fully animated, responsive, and features subtle parallax depth across all sections.
-- Code has been linted cleanly (`npm run lint`), compiled successfully (`npm run build`), and pushed to the remote `main` branch.
+- The documentation section is now highly performant, visually polished, and properly persists user theme preferences without visual glitches.
+- All global typos have been corrected.
 
 ## Next session starts with
-
-- Reviewing the full end-to-end site experience for any final design polish or moving on to deployment/marketing tasks.
+- Await the developer's next set of features or polish requests for the Sentinel landing page. No immediate blockers remain.
 
 ## Open questions
-
-- None at the moment.
+- None currently.

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -21,6 +22,15 @@ export interface SmoothScrollProviderProps {
 export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({
   children,
 }) => {
+  const pathname = usePathname();
+  const lenisRef = useRef<Lenis | null>(null);
+
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    }
+  }, [pathname]);
+
   useEffect(() => {
     // Check if user prefers reduced motion; if so, skip smooth scrolling
     const prefersReducedMotion = window.matchMedia(
@@ -41,6 +51,7 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({
 
     // Expose globally for programmatic scrolling (e.g. footer links)
     (window as unknown as { lenis: Lenis }).lenis = lenis;
+    lenisRef.current = lenis;
 
     // Synchronize Lenis scroll with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);

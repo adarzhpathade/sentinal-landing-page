@@ -6,6 +6,7 @@ export interface NavigationItem {
 
 export interface NavigationConfig {
   brand: string;
+  brandUrl?: string;
   menuTrigger: string;
   ctaButton: {
     label: string;
@@ -15,16 +16,17 @@ export interface NavigationConfig {
 }
 
 export const NAVIGATION_DATA: NavigationConfig = {
-  brand: "SENTINAL",
+  brand: "SENTINEL",
+  brandUrl: "/",
   menuTrigger: "MENU",
   ctaButton: {
     label: "DOWNLOAD",
-    href: "#download",
+    href: "/download",
   },
   items: [
-    { id: "home", label: "Home", href: "#" },
-    { id: "features", label: "Features", href: "#features" },
-    { id: "pricing", label: "Pricing", href: "#pricing" },
-    { id: "about", label: "About", href: "#about" },
+    { id: "home", label: "Home", href: "/" },
+    { id: "features", label: "Features", href: "/#features" },
+    { id: "pricing", label: "Pricing", href: "/#pricing" },
+    { id: "about", label: "About", href: "/#about" },
   ],
 };

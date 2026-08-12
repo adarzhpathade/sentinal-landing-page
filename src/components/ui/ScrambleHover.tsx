@@ -17,6 +17,7 @@ interface ScrambleHoverProps {
   scrambledClassName?: string;
   triggerOnView?: boolean | "mobileOnly";
   customHoverState?: boolean;
+  disableHover?: boolean;
 }
 
 const ScrambleHover: React.FC<ScrambleHoverProps> = ({
@@ -31,6 +32,7 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
   revealDirection = "start",
   triggerOnView = false,
   customHoverState,
+  disableHover = false,
   ...props
 }) => {
   const ref = useRef<HTMLSpanElement>(null);
@@ -212,8 +214,8 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
   return (
     <motion.span
       ref={ref}
-      onHoverStart={() => customHoverState === undefined && setIsHovering(true)}
-      onHoverEnd={() => customHoverState === undefined && setIsHovering(false)}
+      onHoverStart={() => !disableHover && customHoverState === undefined && setIsHovering(true)}
+      onHoverEnd={() => !disableHover && customHoverState === undefined && setIsHovering(false)}
       className={cn(
         "inline-block cursor-pointer whitespace-pre-wrap",
         className

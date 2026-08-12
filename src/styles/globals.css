@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "./fonts.css";
 
+@custom-variant light (.light-mode &);
+
 :root {
   /* Color Palette */
   --color-primary-dark: #141314;

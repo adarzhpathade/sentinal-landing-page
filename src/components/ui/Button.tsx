@@ -6,7 +6,10 @@ import { cn } from "@/utils/cn";
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "black";
   withSquareIcon?: boolean;
+  squareIconType?: "download" | "home";
   href?: string;
+  target?: string;
+  rel?: string;
   children: React.ReactNode;
   className?: string;
 }
@@ -24,7 +27,10 @@ export const Button = React.forwardRef<
     {
       variant = "primary",
       withSquareIcon = false,
+      squareIconType = "download",
       href,
+      target,
+      rel,
       children,
       className,
       disabled,
@@ -32,6 +38,44 @@ export const Button = React.forwardRef<
     },
     ref
   ) => {
+    const ICONS = {
+      download: {
+        viewBox: "0 0 14 14",
+        element: (
+          <path
+            d="M7 2V9.5M4 6.5L7 9.5L10 6.5M2.5 12H11.5"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="square"
+            strokeLinejoin="miter"
+          />
+        ),
+      },
+      home: {
+        viewBox: "0 0 24 24",
+        element: (
+          <>
+            <path
+              d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+              stroke="currentColor"
+              strokeWidth="2"
+              fill="none"
+              strokeLinecap="square"
+              strokeLinejoin="miter"
+            />
+            <polyline
+              points="9 22 9 12 15 12 15 22"
+              stroke="currentColor"
+              strokeWidth="2"
+              fill="none"
+              strokeLinecap="square"
+              strokeLinejoin="miter"
+            />
+          </>
+        ),
+      },
+    };
+
     const baseStyles =
       "inline-flex items-center justify-center font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB460D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#141314] disabled:opacity-50 disabled:pointer-events-none select-none rounded-none";
 
@@ -101,6 +145,8 @@ export const Button = React.forwardRef<
             className={wrapperClasses}
             aria-label={typeof children === "string" ? children : "Action"}
             onClick={handleAnchorClick}
+            target={target}
+            rel={rel}
           >
             {/* Left Square (Appears on Hover) */}
             <span
@@ -110,18 +156,12 @@ export const Button = React.forwardRef<
               <svg
                 width="14"
                 height="14"
-                viewBox="0 0 14 14"
+                viewBox={ICONS[squareIconType].viewBox}
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="min-w-[14px] -translate-x-full -rotate-180 transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0 group-hover:rotate-0"
               >
-                <path
-                  d="M7 2V9.5M4 6.5L7 9.5L10 6.5M2.5 12H11.5"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="square"
-                  strokeLinejoin="miter"
-                />
+                {ICONS[squareIconType].element}
               </svg>
             </span>
 
@@ -144,18 +184,12 @@ export const Button = React.forwardRef<
               <svg
                 width="14"
                 height="14"
-                viewBox="0 0 14 14"
+                viewBox={ICONS[squareIconType].viewBox}
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="min-w-[14px] translate-x-0 rotate-0 transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-full group-hover:rotate-180"
               >
-                <path
-                  d="M7 2V9.5M4 6.5L7 9.5L10 6.5M2.5 12H11.5"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="square"
-                  strokeLinejoin="miter"
-                />
+                {ICONS[squareIconType].element}
               </svg>
             </span>
           </a>
@@ -175,18 +209,12 @@ export const Button = React.forwardRef<
             <svg
               width="14"
               height="14"
-              viewBox="0 0 14 14"
+              viewBox={ICONS[squareIconType].viewBox}
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="min-w-[14px] -translate-x-full -rotate-180 transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0 group-hover:rotate-0"
             >
-              <path
-                d="M7 2V9.5M4 6.5L7 9.5L10 6.5M2.5 12H11.5"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="square"
-                strokeLinejoin="miter"
-              />
+              {ICONS[squareIconType].element}
             </svg>
           </button>
 
@@ -215,18 +243,12 @@ export const Button = React.forwardRef<
             <svg
               width="14"
               height="14"
-              viewBox="0 0 14 14"
+              viewBox={ICONS[squareIconType].viewBox}
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="min-w-[14px] translate-x-0 rotate-0 transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-full group-hover:rotate-180"
             >
-              <path
-                d="M7 2V9.5M4 6.5L7 9.5L10 6.5M2.5 12H11.5"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="square"
-                strokeLinejoin="miter"
-              />
+              {ICONS[squareIconType].element}
             </svg>
           </button>
         </div>
@@ -240,6 +262,8 @@ export const Button = React.forwardRef<
           ref={ref as React.Ref<HTMLAnchorElement>}
           className={cn(baseStyles, variantStyles[variant], className)}
           onClick={handleAnchorClick}
+          target={target}
+          rel={rel}
         >
           {content}
         </a>

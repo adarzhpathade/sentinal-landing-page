@@ -19,6 +19,8 @@ export const metadata: Metadata = {
     "Execute shell commands, automate workflows, and control your desktop using natural language—all completely offline.",
 };
 
+import ChessGridTransition from "@/components/effects/chess-grid-transition";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,10 +29,28 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col bg-[#141314] text-white">
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.getItem('sentinel-theme') === 'light') {
+                  document.documentElement.classList.add('light-mode');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
+      <body className="flex min-h-screen flex-col bg-[#141314] text-white">
+        <SmoothScrollProvider>
+          <ChessGridTransition>
+            {children}
+          </ChessGridTransition>
+        </SmoothScrollProvider>
       </body>
     </html>
   );

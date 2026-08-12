@@ -230,7 +230,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
     <section
       ref={sectionRef}
       className={cn(
-        "relative z-20 w-full overflow-hidden bg-[#F4F4F4] pb-24 text-[#141314] sm:pb-32 md:pb-40",
+        "relative z-20 w-full overflow-hidden bg-[#F4F4F4] -mt-[1px] pt-8 pb-24 text-[#141314] sm:pt-12 sm:pb-32 md:pt-16 md:pb-40",
         className
       )}
       aria-label="How it works Section"

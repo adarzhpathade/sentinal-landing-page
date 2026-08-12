@@ -85,7 +85,7 @@ export const Features: React.FC<FeaturesProps> = ({ className }) => {
     <section
       ref={sectionRef}
       className={cn(
-        "relative z-20 w-full overflow-hidden bg-[#F4F4F4] py-16 text-[#141314] sm:py-24 md:py-32",
+        "relative z-20 w-full overflow-hidden bg-[#F4F4F4] pt-16 pb-8 text-[#141314] sm:pt-24 sm:pb-12 md:pt-32 md:pb-16",
         className
       )}
       aria-label="Features Section"
@@ -129,7 +129,7 @@ export const Features: React.FC<FeaturesProps> = ({ className }) => {
 
 Features.displayName = "Features";
 
-const FeatureCard = ({ feature }: { feature: Feature }) => {
+export const FeatureCard = ({ feature }: { feature: Feature }) => {
   const ref = useRef<HTMLDivElement>(null);
   // Match the -10% margin used inside ScrambleHover for perfect sync
   const isInView = useInView(ref, { once: true, margin: "-10%" });

@@ -1,0 +1,11 @@
+{
+  "components": {
+    "chess-grid-transition": {
+      "version": "1.1.0",
+      "installedAt": "2026-08-12T09:04:57.888Z",
+      "files": {
+        "src/components/effects/chess-grid-transition/index.jsx": "sha256:cdfec0275ff8fd3cb255072a4387277a98f26a97f8df132d81c0597235cc7d3e"
+      }
+    }
+  }
+}
