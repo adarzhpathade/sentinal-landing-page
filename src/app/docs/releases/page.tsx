@@ -124,7 +124,7 @@ export default function ReleasesPage() {
               <li className="flex items-center gap-3">
                 <span className="text-[#FB460D]">—</span>
                 <p>
-                  Found a bug? Open an issue on our <a href="https://github.com/NetPranav/Sentinel-Terminal" target="_blank" rel="noopener noreferrer" className="text-[#FB460D] hover:underline transition-all">GitHub Repository</a>.
+                  Found a bug? Open an issue on our <a href="https://github.com/NetPranav/Sentinal-Terminal" target="_blank" rel="noopener noreferrer" className="text-[#FB460D] hover:underline transition-all">GitHub Repository</a>.
                 </p>
               </li>
               <li className="flex items-center gap-3">

@@ -22,6 +22,7 @@ export default function ChessGridTransition({ children }) {
 
   const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
+  const [viewportMeasured, setViewportMeasured] = useState(false)
 
   const cols = 8
   const desktopRows = 4
@@ -34,6 +35,7 @@ export default function ChessGridTransition({ children }) {
       const width = window.innerWidth
       setIsMobile(width <= 639)
       setIsTablet(width > 639 && width <= 1025)
+      setViewportMeasured(true)
     }
 
     updateViewport()
@@ -91,6 +93,8 @@ export default function ChessGridTransition({ children }) {
   const hasLoaded = useRef(false)
 
   useEffect(() => {
+    if (!viewportMeasured) return
+
     const cells = gridRef.current.children
 
     if (!hasLoaded.current) {
@@ -136,7 +140,7 @@ export default function ChessGridTransition({ children }) {
     }
     setMounted(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [rows])
+  }, [rows, viewportMeasured])
 
   const totalCells = cols * rows
 
@@ -211,7 +215,7 @@ export default function ChessGridTransition({ children }) {
                 height: `calc(100vh / ${rows} + ${overlap}px)`,
                 left: `calc(${colIndex} * (100vw / ${cols}) * ${isMobile ? 1.6 : 1} - ${overlap / 2}px)`,
                 top: `calc(${rowIndex} * (100vh / ${rows}) - ${overlap / 2}px)`,
-                transform: (!mounted && pathname?.startsWith('/docs')) ? `translateX(${-(colIndex + 2) * 100}%)` : undefined,
+                transform: (pathname?.startsWith('/docs')) ? `translateX(${-(colIndex + 2) * 100}%)` : undefined,
               }}
             ></span>
           )

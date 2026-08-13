@@ -1,30 +1,29 @@
-# Memory — Sentinel Documentation & Performance Polish
+# Memory — UI Bug Fixes and Page Transitions
 
 Last updated: 2026-08-12
 
 ## What was built
-- Fixed "Sentinal" typos globally to "Sentinel" (Navigation, Hero text, GitHub repo links, Mobile Docs Topbar).
-- Enhanced the `Button` component to support multiple square icons (`squareIconType`); updated the Docs layout to use a minimalist "Home" icon instead of the default download arrow.
-- Tightened the spacing in the Docs navigation menu for a more compact and readable layout.
-- Solved Light Mode Flash of Unstyled Content (FOUC) by injecting a blocking theme script in the root `<head>` and persisting state to `localStorage`.
-- Overhauled React & GSAP performance in the Docs section:
-  - Extracted and memoized `SidebarContent` in `layout.tsx` to prevent massive DOM thrashing on state changes.
-  - Scoped all `useGSAP` hooks properly and removed manual DOM queries across all documentation pages.
+- Restored proper navigation globally by using absolute hash links (`/#features` instead of `#features`) inside `navigation.ts`.
+- Unified the text scramble effect on the `/download` page to identically match the fast, sequential orange reveal seen on the FAQ section.
+- Corrected mobile spacing on the `/download` page by standardizing the `winget` command box top-margin and removing redundant bottom margins on OS containers to rely strictly on grid gap spacing.
+- Fixed a sub-pixel rendering artifact (1px dark line bleed) between the `Features` and `HowItWorks` sections by introducing a `-mt-[1px]` overlap between the two identical-color blocks.
+- Fixed the `ChessGridTransition` logic so the initial "loader" animation is bypassed on the `/docs` page without breaking the live transition animations when navigating between pages.
+- Resolved multiple React and ESLint warnings across the app (unescaped quotes, comment text nodes, `set-state-in-effect` issues) and successfully deployed a clean `npm run build` to git.
 
 ## Decisions made
-- Kept the theme toggle localized to the Docs section via `light-mode` class injected on `<html>`, allowing the landing page to remain safely dark while fully supporting light mode in the documentation.
-- Extracted `SidebarContent` outside of `DocsLayout` into a `React.memo` component rather than refactoring the entire layout routing logic.
+- Resolved the FOUC "red screen" on `/docs` bypass by adding an inline React `transform` during SSR, which is then removed immediately after component mount so that GSAP retains full control over the DOM elements during live navigation.
 
 ## Problems solved
-- **FOUC on Refresh**: Fixed the jarring dark-to-light flash on page reload by moving the `light-mode` class directly to `document.documentElement` before React even hydrates.
-- **Layout Thrashing**: Fixed an issue where the entire Docs sidebar was unmounting/remounting on every theme or menu toggle due to an inline component definition.
+- **Transition Vanishing:** Fixed a bug where navigating away from a page caused the transition grid blocks to instantly teleport off-screen. This was caused by the `useEffect` listening to `pathname` changes and overriding the live GSAP transition timeline.
+- **Background Bleed:** Solved the annoying sub-pixel background bleed (line) between sections using a negative margin technique commonly used in Tailwind CSS.
 
 ## Current state
-- The documentation section is now highly performant, visually polished, and properly persists user theme preferences without visual glitches.
-- All global typos have been corrected.
+- The download page and global navigation are perfectly responsive and functional.
+- Page transitions are fully operational and skip initial loading correctly on the docs page.
+- Codebase is lint-free, built successfully, and pushed to `main`.
 
 ## Next session starts with
-- Await the developer's next set of features or polish requests for the Sentinel landing page. No immediate blockers remain.
+- Awaiting the developer's next set of feature requests or design tweaks for the landing page or application logic.
 
 ## Open questions
-- None currently.
+- None at this time.

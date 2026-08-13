@@ -88,7 +88,7 @@ export default function InstallationPage() {
           <h3 className="text-xl text-white light:text-black font-normal tracking-tight mt-12 mb-4">Manual Installation</h3>
           <p className="text-white/60 light:text-black/60">
             If you prefer to install Sentinel manually or compile from source, you can find the detailed build 
-            instructions on our <a href="https://github.com/NetPranav/Sentinel-Terminal" target="_blank" rel="noopener noreferrer" className="text-[#FB460D] hover:underline transition-all">GitHub repository</a>.
+            instructions on our <a href="https://github.com/NetPranav/Sentinal-Terminal" target="_blank" rel="noopener noreferrer" className="text-[#FB460D] hover:underline transition-all">GitHub repository</a>.
           </p>
         </div>
       </div>

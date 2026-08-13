@@ -17,22 +17,22 @@ export default function HomePage() {
         </div>
 
         {/* Features section overlapping the Hero */}
-        <div id="features">
+        <div id="features" className="scroll-mt-24">
           <Features />
         </div>
 
         {/* How it works section */}
-        <div id="how-it-works">
+        <div id="how-it-works" className="scroll-mt-24">
           <HowItWorks />
         </div>
 
         {/* FAQ section */}
-        <div id="faq">
+        <div id="faq" className="scroll-mt-24">
           <Faq />
         </div>
 
         {/* Download section — natural height */}
-        <div id="download">
+        <div id="download" className="scroll-mt-24">
           <Download />
         </div>
 

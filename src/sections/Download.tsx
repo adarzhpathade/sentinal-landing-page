@@ -109,17 +109,30 @@ export const Download: React.FC<DownloadProps> = ({ className }) => {
 
           <div
             ref={buttonsRef}
-            className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6"
+            className="mt-12 flex flex-col items-center justify-center gap-6"
           >
-            <Button variant="black" withSquareIcon className="w-[200px] whitespace-nowrap">
-              WINDOWS
-            </Button>
-            <Button variant="black" withSquareIcon className="w-[200px] whitespace-nowrap">
-              MAC OS
-            </Button>
-            <Button variant="black" withSquareIcon className="w-[200px] whitespace-nowrap">
-              LINUX
-            </Button>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+              <Button 
+                variant="primary" 
+                withSquareIcon 
+                className="w-[200px] whitespace-nowrap"
+                href="/download"
+              >
+                DOWNLOAD
+              </Button>
+              <Button 
+                variant="black" 
+                className="w-[200px] whitespace-nowrap"
+                href="https://github.com/NetPranav/Sentinal-Terminal"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                VIEW SOURCE
+              </Button>
+            </div>
+            <p className="font-sans text-xs text-[#141314]/60 sm:text-sm text-center">
+              Available for macOS, Windows, and Linux.<br className="sm:hidden" /> Free and open source.
+            </p>
           </div>
         </div>
       </Container>

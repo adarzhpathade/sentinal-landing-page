@@ -27,7 +27,17 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({
 
   useEffect(() => {
     if (lenisRef.current) {
-      lenisRef.current.scrollTo(0, { immediate: true });
+      const hash = window.location.hash;
+      if (hash) {
+        setTimeout(() => {
+          const target = document.querySelector(hash) as HTMLElement;
+          if (target && lenisRef.current) {
+            lenisRef.current.scrollTo(target, { immediate: true, offset: -96 });
+          }
+        }, 100);
+      } else {
+        lenisRef.current.scrollTo(0, { immediate: true });
+      }
     }
   }, [pathname]);
 
