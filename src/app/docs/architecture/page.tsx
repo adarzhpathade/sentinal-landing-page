@@ -48,7 +48,7 @@ export default function ArchitecturePage() {
         <h1 className="docs-content-title text-3xl md:text-[2.75rem] leading-none font-normal tracking-tight">
           Architecture & Capabilities
         </h1>
-        <div className="docs-content-header text-[#FB460D] tracking-widest text-sm mt-2">
+        <div className="docs-content-header text-[#ABABAB] light:text-[#6F6F6F] tracking-widest text-sm mt-2">
           {"// CAPABILITIES"}
         </div>
       </div>
@@ -61,7 +61,7 @@ export default function ArchitecturePage() {
           </p>
         </div>
 
-        <div className="w-full h-[1px] bg-[#FB460D]/30 mt-16 mb-6" />
+        <div className="w-full h-[1px] bg-[#ABABAB]/30 light:bg-[#6F6F6F]/45 mt-16 mb-6" />
         
         <h2 className="text-2xl md:text-[2rem] text-white light:text-black font-normal tracking-tight mb-6">The Explicit &gt; AI Trigger</h2>
         
@@ -72,7 +72,7 @@ export default function ArchitecturePage() {
             in your high-speed PTY session with zero overhead.
           </p>
           <p>
-            When you want to summon conversational intelligence, simply prefix your prompt with the <code className="text-[#FB460D] font-bold">&gt; </code> symbol:
+            When you want to summon conversational intelligence, simply prefix your prompt with the <code className="text-[#ABABAB] light:text-[#6F6F6F] font-bold">&gt; </code> symbol:
           </p>
           <div className="bg-[#1C1A1C] light:bg-gray-100/50 border border-white/10 light:border-black/10 p-4 md:p-6 my-4 space-y-4 text-xs md:text-sm overflow-x-auto">
             <div>
@@ -81,12 +81,12 @@ export default function ArchitecturePage() {
             </div>
             <div>
               <p className="text-white/40 light:text-black/40 mb-1"># AI Automation command</p>
-              <code className="text-[#FB460D] break-words">&gt; open this folder inside antigravity</code>
+              <code className="text-[#ABABAB] light:text-[#6F6F6F] break-words">&gt; open this folder inside antigravity</code>
             </div>
           </div>
         </div>
 
-        <div className="w-full h-[1px] bg-[#FB460D]/30 mt-16 mb-6" />
+        <div className="w-full h-[1px] bg-[#ABABAB]/30 light:bg-[#6F6F6F]/45 mt-16 mb-6" />
 
         <h2 className="text-2xl md:text-[2rem] text-white light:text-black font-normal tracking-tight mb-6">Universal IDE Launchers</h2>
         
@@ -97,23 +97,23 @@ export default function ArchitecturePage() {
           </p>
           <ul className="space-y-5 mt-6">
             <li className="flex gap-4 items-start">
-              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#FB460D] flex-shrink-0" />
+              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#ABABAB] light:bg-[#6F6F6F] flex-shrink-0" />
               <p>
-                <span className="text-[#FB460D] font-semibold tracking-wide">Natural Phrase Resolution:</span>{" "}
+                <span className="text-[#ABABAB] light:text-[#6F6F6F] font-semibold tracking-wide">Natural Phrase Resolution:</span>{" "}
                 Speak naturally—phrases like &quot;this folder&quot; or &quot;here&quot; are instantly translated to your current working directory.
               </p>
             </li>
             <li className="flex gap-4 items-start">
-              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#FB460D] flex-shrink-0" />
+              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#ABABAB] light:bg-[#6F6F6F] flex-shrink-0" />
               <p>
-                <span className="text-[#FB460D] font-semibold tracking-wide">Resilient Resolution:</span>{" "}
+                <span className="text-[#ABABAB] light:text-[#6F6F6F] font-semibold tracking-wide">Resilient Resolution:</span>{" "}
                 Strips leading articles and maps conversational aliases to exact system bundle names (e.g. &quot;Vs Code&quot;, &quot;Cursor&quot;, &quot;xcode&quot;).
               </p>
             </li>
           </ul>
         </div>
 
-        <div className="w-full h-[1px] bg-[#FB460D]/30 mt-16 mb-6" />
+        <div className="w-full h-[1px] bg-[#ABABAB]/30 light:bg-[#6F6F6F]/45 mt-16 mb-6" />
 
         <h2 className="text-2xl md:text-[2rem] text-white light:text-black font-normal tracking-tight mb-6">Smart Security</h2>
         
@@ -124,23 +124,23 @@ export default function ArchitecturePage() {
           </p>
           <ul className="space-y-5 mt-6">
             <li className="flex gap-4 items-start">
-              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#FB460D] flex-shrink-0" />
+              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#ABABAB] light:bg-[#6F6F6F] flex-shrink-0" />
               <p>
-                <span className="text-[#FB460D] font-semibold tracking-wide">Trivial Whitelisting:</span>{" "}
+                <span className="text-[#ABABAB] light:text-[#6F6F6F] font-semibold tracking-wide">Trivial Whitelisting:</span>{" "}
                 Harmless read-only operational inquiries execute immediately without triggering disruptive authentication holds.
               </p>
             </li>
             <li className="flex gap-4 items-start">
-              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#FB460D] flex-shrink-0" />
+              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#ABABAB] light:bg-[#6F6F6F] flex-shrink-0" />
               <p>
-                <span className="text-[#FB460D] font-semibold tracking-wide">Gated Destructive Operations:</span>{" "}
+                <span className="text-[#ABABAB] light:text-[#6F6F6F] font-semibold tracking-wide">Gated Destructive Operations:</span>{" "}
                 High-risk actions immediately trigger an interactive visual security hold requiring mandatory explicit user consent.
               </p>
             </li>
           </ul>
         </div>
 
-        <div className="w-full h-[1px] bg-[#FB460D]/30 mt-16 mb-6" />
+        <div className="w-full h-[1px] bg-[#ABABAB]/30 light:bg-[#6F6F6F]/45 mt-16 mb-6" />
 
         <h2 className="text-2xl md:text-[2rem] text-white light:text-black font-normal tracking-tight mb-6">Clean Screen & Aesthetics</h2>
         

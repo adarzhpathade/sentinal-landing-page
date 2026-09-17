@@ -48,7 +48,7 @@ export default function InstallationPage() {
         <h1 className="docs-content-title text-3xl md:text-[2.75rem] leading-none font-normal tracking-tight">
           Installation
         </h1>
-        <div className="docs-content-header text-[#FB460D] tracking-widest text-sm mt-2">
+        <div className="docs-content-header text-[#ABABAB] light:text-[#6F6F6F] tracking-widest text-sm mt-2">
           {"// GETTING STARTED"}
         </div>
       </div>
@@ -66,7 +66,7 @@ export default function InstallationPage() {
           </p>
         </div>
 
-        <div className="w-full h-[1px] bg-[#FB460D]/30 mt-16 mb-6" />
+        <div className="w-full h-[1px] bg-[#ABABAB]/30 light:bg-[#6F6F6F]/45 mt-16 mb-6" />
         
         <h2 className="text-2xl md:text-[2rem] text-white light:text-black font-normal tracking-tight mb-6">Quick Install</h2>
         
@@ -77,7 +77,7 @@ export default function InstallationPage() {
           </p>
 
           <div className="bg-[#1C1A1C] light:bg-gray-100/50 border border-white/10 light:border-black/10 p-6 my-4 flex items-center justify-between">
-            <code className="text-[#FB460D] font-mono text-sm">
+            <code className="text-[#ABABAB] light:text-[#6F6F6F] font-mono text-sm">
               curl -fsSL https://sentinel.dev/install | bash
             </code>
           </div>
@@ -88,7 +88,7 @@ export default function InstallationPage() {
           <h3 className="text-xl text-white light:text-black font-normal tracking-tight mt-12 mb-4">Manual Installation</h3>
           <p className="text-white/60 light:text-black/60">
             If you prefer to install Sentinel manually or compile from source, you can find the detailed build 
-            instructions on our <a href="https://github.com/NetPranav/Sentinal-Terminal" target="_blank" rel="noopener noreferrer" className="text-[#FB460D] hover:underline transition-all">GitHub repository</a>.
+            instructions on our <a href="https://github.com/NetPranav/Sentinal-Terminal" target="_blank" rel="noopener noreferrer" className="text-[#ABABAB] light:text-[#6F6F6F] hover:underline transition-all">GitHub repository</a>.
           </p>
         </div>
       </div>

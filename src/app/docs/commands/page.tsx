@@ -75,7 +75,7 @@ export default function CommandsPage() {
         <h1 className="docs-content-title text-3xl md:text-[2.75rem] leading-none font-normal tracking-tight">
           Command Reference
         </h1>
-        <div className="docs-content-header text-[#FB460D] tracking-widest text-sm mt-2">
+        <div className="docs-content-header text-[#ABABAB] light:text-[#6F6F6F] tracking-widest text-sm mt-2">
           {"// DICTIONARY"}
         </div>
       </div>
@@ -84,17 +84,17 @@ export default function CommandsPage() {
         <div className="space-y-6 text-sm font-mono text-white/90 light:text-black/90">
           <p className="text-base leading-relaxed font-medium">
             Try typing these real example commands into Sentinel today! Simply start your instruction with 
-            the <code className="text-[#FB460D] font-bold">&gt; </code> symbol to experience instantaneous conversational orchestration.
+            the <code className="text-[#ABABAB] light:text-[#6F6F6F] font-bold">&gt; </code> symbol to experience instantaneous conversational orchestration.
           </p>
         </div>
 
-        <div className="w-full h-[1px] bg-[#FB460D]/30 mt-16 mb-12" />
+        <div className="w-full h-[1px] bg-[#ABABAB]/30 light:bg-[#6F6F6F]/45 mt-16 mb-12" />
         
         <div className="space-y-8 font-mono">
           {commands.map((cmd, idx) => (
             <div key={idx} className="border border-white/10 light:border-black/10 p-6 md:p-8 hover:border-white/20 light:hover:border-black/20 transition-colors bg-transparent light:bg-gray-100/30">
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
-                <span className="text-[#FB460D] text-xs font-semibold tracking-widest uppercase mb-2 md:mb-0">
+                <span className="text-[#ABABAB] light:text-[#6F6F6F] text-xs font-semibold tracking-widest uppercase mb-2 md:mb-0">
                   {cmd.domain}
                 </span>
                 <span className="text-white/40 light:text-black/40 text-xs">

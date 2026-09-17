@@ -48,7 +48,7 @@ export default function ReleasesPage() {
         <h1 className="docs-content-title text-3xl md:text-[2.75rem] leading-none font-normal tracking-tight">
           Release Notes
         </h1>
-        <div className="docs-content-header text-[#FB460D] tracking-widest text-sm mt-2">
+        <div className="docs-content-header text-[#ABABAB] light:text-[#6F6F6F] tracking-widest text-sm mt-2">
           {"// UPDATES"}
         </div>
       </div>
@@ -60,12 +60,12 @@ export default function ReleasesPage() {
           </p>
         </div>
 
-        <div className="w-full h-[1px] bg-[#FB460D]/30 mt-16 mb-12" />
+        <div className="w-full h-[1px] bg-[#ABABAB]/30 light:bg-[#6F6F6F]/45 mt-16 mb-12" />
 
         <div className="mb-16">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl md:text-[2rem] text-white light:text-black font-normal tracking-tight">Sentinel Public Beta</h2>
-            <span className="text-[#FB460D] font-mono text-sm border border-[#FB460D]/30 px-3 py-1 bg-[#FB460D]/10">
+            <span className="text-[#ABABAB] light:text-[#6F6F6F] font-mono text-sm border border-[#ABABAB]/30 light:border-[#6F6F6F]/45 px-3 py-1 bg-[#ABABAB]/10 light:bg-[#6F6F6F]/15">
               v0.1.0
             </span>
           </div>
@@ -83,33 +83,33 @@ export default function ReleasesPage() {
             <h3 className="text-xl text-white light:text-black font-normal tracking-tight mt-12 mb-4">What&apos;s New in the Beta</h3>
             <ul className="space-y-5 mt-6">
               <li className="flex gap-4 items-start">
-                <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#FB460D] flex-shrink-0" />
+                <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#ABABAB] light:bg-[#6F6F6F] flex-shrink-0" />
                 <p>
-                  <span className="text-[#FB460D] font-semibold tracking-wide">The Explicit &gt; AI Trigger:</span>{" "}
+                  <span className="text-[#ABABAB] light:text-[#6F6F6F] font-semibold tracking-wide">The Explicit &gt; AI Trigger:</span>{" "}
                   Continue using standard shell commands (<code>ls</code>, <code>npm run</code>, <code>git</code>) with zero overhead. 
                   When you need automation, simply prefix your prompt with <code>&gt;</code> to invoke conversational orchestration.
                 </p>
               </li>
               <li className="flex gap-4 items-start">
-                <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#FB460D] flex-shrink-0" />
+                <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#ABABAB] light:bg-[#6F6F6F] flex-shrink-0" />
                 <p>
-                  <span className="text-[#FB460D] font-semibold tracking-wide">Universal IDE Launchers:</span>{" "}
+                  <span className="text-[#ABABAB] light:text-[#6F6F6F] font-semibold tracking-wide">Universal IDE Launchers:</span>{" "}
                   Natively integrates with your coding environments (VS Code, Cursor, Xcode) using intelligent natural language grammar resolution. 
                   Sentinel understands contexts like &quot;this folder&quot; or &quot;here&quot; effortlessly.
                 </p>
               </li>
               <li className="flex gap-4 items-start">
-                <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#FB460D] flex-shrink-0" />
+                <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#ABABAB] light:bg-[#6F6F6F] flex-shrink-0" />
                 <p>
-                  <span className="text-[#FB460D] font-semibold tracking-wide">Zero-Trust Security Engine:</span>{" "}
+                  <span className="text-[#ABABAB] light:text-[#6F6F6F] font-semibold tracking-wide">Zero-Trust Security Engine:</span>{" "}
                   We&apos;ve implemented a visual, interactive security hold for gated, destructive operations. Harmless inquiries run instantly, 
                   while risky actions demand your explicit visual consent.
                 </p>
               </li>
               <li className="flex gap-4 items-start">
-                <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#FB460D] flex-shrink-0" />
+                <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#ABABAB] light:bg-[#6F6F6F] flex-shrink-0" />
                 <p>
-                  <span className="text-[#FB460D] font-semibold tracking-wide">Clean Screen Architecture:</span>{" "}
+                  <span className="text-[#ABABAB] light:text-[#6F6F6F] font-semibold tracking-wide">Clean Screen Architecture:</span>{" "}
                   Direct xterm buffer wiping keeps your workspace absolutely clutter-free, stripping away annoying end-of-workflow logs 
                   when you execute <code>&gt; clear terminal</code>.
                 </p>
@@ -122,13 +122,13 @@ export default function ReleasesPage() {
             </p>
             <ul className="space-y-4 mt-4">
               <li className="flex items-center gap-3">
-                <span className="text-[#FB460D]">—</span>
+                <span className="text-[#ABABAB] light:text-[#6F6F6F]">—</span>
                 <p>
-                  Found a bug? Open an issue on our <a href="https://github.com/NetPranav/Sentinal-Terminal" target="_blank" rel="noopener noreferrer" className="text-[#FB460D] hover:underline transition-all">GitHub Repository</a>.
+                  Found a bug? Open an issue on our <a href="https://github.com/NetPranav/Sentinal-Terminal" target="_blank" rel="noopener noreferrer" className="text-[#ABABAB] light:text-[#6F6F6F] hover:underline transition-all">GitHub Repository</a>.
                 </p>
               </li>
               <li className="flex items-center gap-3">
-                <span className="text-[#FB460D]">—</span>
+                <span className="text-[#ABABAB] light:text-[#6F6F6F]">—</span>
                 <p>Have a feature request? Join the discussion and let us know what you&apos;d like to see next!</p>
               </li>
             </ul>

@@ -47,7 +47,7 @@ const TimelineContent = ({
         <ScrambleHover
           text={step.title}
           sequential={true}
-          scrambledClassName="text-[#FB460D]"
+          scrambledClassName="text-[#ABABAB]"
           customHoverState={isActive}
           className="font-mono text-[20px] leading-tight font-normal text-[#141314]"
         />
@@ -247,11 +247,11 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
                 How it works.
               </h2>
               <div className="mt-2 flex items-center gap-3 font-mono text-[10px] tracking-[0.15em] text-[#141314] uppercase sm:text-[11px]">
-                <div className="h-2 w-2 bg-[#FB460D]" />
+                <div className="h-2 w-2 bg-[#ABABAB]" />
                 <p>From prompt to execution.</p>
               </div>
             </div>
-            <div className="mt-2 font-mono text-[11px] tracking-[0.15em] text-[#FB460D] uppercase sm:text-xs md:mt-0">
+            <div className="mt-2 font-mono text-[11px] tracking-[0.15em] text-[#ABABAB] uppercase sm:text-xs md:mt-0">
               {"// PROCESS"}
             </div>
           </div>
@@ -264,7 +264,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
             <div className="w-full px-8 md:px-24 lg:px-40 xl:px-48">
               <div className="relative flex w-full items-center justify-between">
                 {/* Horizontal Line */}
-                <div className="timeline-line absolute top-1/2 right-0 left-0 h-[1px] -translate-y-1/2 bg-[#FB460D]" />
+                <div className="timeline-line absolute top-1/2 right-0 left-0 h-[1px] -translate-y-1/2 bg-[#ABABAB]" />
 
                 {HOW_IT_WORKS_DATA.map((step, index) => {
                   const isTop = step.position === "top";
@@ -274,7 +274,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
                       {/* Timeline Node */}
                       <div className="relative z-10">
                         {/* Large Square */}
-                        <div className="timeline-dot large h-5 w-5 rounded-none bg-[#FB460D]" />
+                        <div className="timeline-dot large h-5 w-5 rounded-none bg-[#ABABAB]" />
 
                         {/* Content Container */}
                         <TimelineContent step={step} isTop={isTop} />
@@ -282,7 +282,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
 
                       {/* Small interstitial dot */}
                       {index < HOW_IT_WORKS_DATA.length - 1 && (
-                        <div className="timeline-dot small relative z-10 h-2 w-2 rounded-none bg-[#FB460D]" />
+                        <div className="timeline-dot small relative z-10 h-2 w-2 rounded-none bg-[#ABABAB]" />
                       )}
                     </React.Fragment>
                   );
@@ -294,7 +294,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
           {/* Mobile Alternating Timeline */}
           <div ref={mobileTimelineRef} className="relative mt-24 md:hidden">
             {/* Center vertical line */}
-            <div className="absolute top-0 bottom-0 left-1/2 w-[1px] -translate-x-1/2 bg-[#FB460D]" />
+            <div className="absolute top-0 bottom-0 left-1/2 w-[1px] -translate-x-1/2 bg-[#ABABAB]" />
 
             <div className="flex flex-col gap-12">
               {HOW_IT_WORKS_DATA.map((step, index) => {
@@ -309,7 +309,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
                       )}
                     >
                       {/* Dot on center line */}
-                      <div className="mobile-dot absolute top-1 left-1/2 z-10 h-3 w-3 -translate-x-1/2 rounded-none bg-[#FB460D]" />
+                      <div className="mobile-dot absolute top-1 left-1/2 z-10 h-3 w-3 -translate-x-1/2 rounded-none bg-[#ABABAB]" />
 
                       {/* Content */}
                       <div
@@ -322,7 +322,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ className }) => {
                           <ScrambleHover
                             text={step.title}
                             sequential={true}
-                            scrambledClassName="text-[#FB460D]"
+                            scrambledClassName="text-[#ABABAB]"
                             triggerOnView={true}
                             className="font-mono text-[16px] leading-tight font-normal text-[#141314]"
                           />

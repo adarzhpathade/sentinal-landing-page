@@ -564,7 +564,7 @@ export function AnimatedFooter({
                 }} 
                 className="group flex items-center hover:text-white transition-colors w-fit"
               >
-                <div className="h-2 overflow-hidden bg-[#FB460D] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] mr-0 w-0 group-hover:mr-3 group-hover:w-2" />
+                <div className="h-2 overflow-hidden bg-[#ABABAB] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] mr-0 w-0 group-hover:mr-3 group-hover:w-2" />
                 {link.label}
               </a>
             ))}
@@ -619,7 +619,7 @@ export function AnimatedFooter({
           {/* Product Tag */}
           <div className="flex justify-center text-center w-full">
             <span className="uppercase tracking-[0.3em] text-[#ffffff]/30 text-[10px] md:text-xs font-semibold">
-              A PRODUCT FROM <span className="text-[#FB460D] font-bold">MAGNM</span>
+              A PRODUCT FROM <span className="text-[#ABABAB] font-bold">MAGNM</span>
             </span>
           </div>
         </div>

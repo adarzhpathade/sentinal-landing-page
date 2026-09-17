@@ -97,12 +97,12 @@ export const Download: React.FC<DownloadProps> = ({ className }) => {
           </h2>
           
           <div className="relative mt-6 flex items-center justify-center font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#141314] sm:mt-8 sm:text-[13px]">
-            <div ref={wipeRef} className="absolute inset-y-0 -inset-x-3 z-10 origin-left scale-x-0 bg-[#FB460D]" />
+            <div ref={wipeRef} className="absolute inset-y-0 -inset-x-3 z-10 origin-left scale-x-0 bg-[#ABABAB]" />
             <div ref={techStackRef} className="flex flex-nowrap items-center justify-center whitespace-nowrap opacity-0">
               <span>TYPESCRIPT</span>
-              <span className="mx-3 inline-block h-[6px] w-[6px] bg-[#FB460D] sm:mx-5 sm:h-[8px] sm:w-[8px]"></span>
+              <span className="mx-3 inline-block h-[6px] w-[6px] bg-[#ABABAB] sm:mx-5 sm:h-[8px] sm:w-[8px]"></span>
               <span>JAVASCRIPT</span>
-              <span className="mx-3 inline-block h-[6px] w-[6px] bg-[#FB460D] sm:mx-5 sm:h-[8px] sm:w-[8px]"></span>
+              <span className="mx-3 inline-block h-[6px] w-[6px] bg-[#ABABAB] sm:mx-5 sm:h-[8px] sm:w-[8px]"></span>
               <span>RUST</span>
             </div>
           </div>

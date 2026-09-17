@@ -116,7 +116,7 @@ Used for:
 Primary Accent
 
 ```css
-#FB460D
+#ABABAB
 ```
 
 The accent color should be used sparingly.
