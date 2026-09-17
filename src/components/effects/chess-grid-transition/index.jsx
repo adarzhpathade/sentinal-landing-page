@@ -209,7 +209,7 @@ export default function ChessGridTransition({ children }) {
           return (
             <span
               key={i}
-              className='bg-[#ff5f00] absolute shrink-0'
+              className='bg-[#ABABAB] absolute shrink-0'
               style={{
                 width: `calc((100vw / ${cols}) * ${isMobile ? 1.6 : 1} + ${overlap}px)`,
                 height: `calc(100vh / ${rows} + ${overlap}px)`,
