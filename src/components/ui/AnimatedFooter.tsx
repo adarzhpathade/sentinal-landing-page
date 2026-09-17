@@ -41,9 +41,9 @@ export interface AnimatedFooterProps {
 
   /** Character ramp, ordered dark → light, used to render the ASCII art. */
   asciiChars?: string;
-  /** Color of the ASCII glyphs. Defaults to "#803500". */
+  /** Color of the ASCII glyphs. Defaults to "#ABABAB". */
   charColor?: string;
-  /** Fill color of a highlighted (hovered) cell. Defaults to "#ff6a00". */
+  /** Fill color of a highlighted (hovered) cell. Defaults to "#ABABAB". */
   hoverColor?: string;
   /** Glyph color inside a highlighted cell. Defaults to "#0f0f0f". */
   hoverCharColor?: string;
@@ -216,8 +216,8 @@ export function AnimatedFooter({
 
   const isDark = true;
 
-  const cc = charColor ?? (isDark ? "#803500" : "#e6b093");
-  const hc = hoverColor ?? "#ff6a00";
+  const cc = charColor ?? "#ABABAB";
+  const hc = hoverColor ?? "#ABABAB";
   const hcc = hoverCharColor ?? (isDark ? "#0f0f0f" : "#ffffff");
 
   // Live-tunable values read inside the animation loop, so tweaking a color or

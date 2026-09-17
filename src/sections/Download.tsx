@@ -33,7 +33,7 @@ export const Download: React.FC<DownloadProps> = ({ className }) => {
         },
       });
 
-      // Orange wipe effect
+      // Accent wipe effect
       tl.to(wipeRef.current, {
         scaleX: 1,
         transformOrigin: "left",
