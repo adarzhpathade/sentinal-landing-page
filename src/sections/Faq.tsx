@@ -106,14 +106,14 @@ const AccordionItem = ({
         onClick={onToggle}
         className={cn(
           "group flex w-full items-center justify-between py-4 text-left transition-colors",
-          isOpen ? "text-[#FB460D]" : "text-[#EEEEEE]"
+          isOpen ? "text-[#ABABAB]" : "text-[#EEEEEE]"
         )}
         aria-expanded={isOpen}
       >
         <div className="flex w-fit items-center">
           <div
             className={cn(
-              "h-2 overflow-hidden bg-[#FB460D] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+              "h-2 overflow-hidden bg-[#ABABAB] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
               isOpen ? "mr-3 w-2" : "mr-0 w-0"
             )}
           />
@@ -122,7 +122,7 @@ const AccordionItem = ({
               text={item.question}
               sequential={true}
               scrambleSpeed={20}
-              scrambledClassName="text-[#FB460D]"
+              scrambledClassName="text-[#ABABAB]"
               triggerOnView={false}
               customHoverState={isSectionInView}
             />

@@ -43,7 +43,7 @@ export default function HomePage() {
           style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
         >
           <div className="fixed bottom-0 left-0 h-[70svh] md:h-[80svh] w-full">
-            <AnimatedFooter charColor="#b34a00" revealOnScroll={false} />
+            <AnimatedFooter charColor="#8f8f8f" revealOnScroll={false} />
           </div>
         </div>
       </div>

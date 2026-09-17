@@ -48,7 +48,7 @@ export default function DocsPage() {
         <h1 className="docs-content-title text-3xl md:text-[2.75rem] leading-none font-normal tracking-tight">
           What is Sentinel
         </h1>
-        <div className="docs-content-header text-[#FB460D] tracking-widest text-sm mt-2">
+        <div className="docs-content-header text-[#ABABAB] light:text-[#6F6F6F] tracking-widest text-sm mt-2">
           {"// GETTING STARTED"}
         </div>
       </div>
@@ -71,7 +71,7 @@ export default function DocsPage() {
           </p>
         </div>
 
-        <div className="w-full h-[1px] bg-[#FB460D]/30 mt-16 mb-6" />
+        <div className="w-full h-[1px] bg-[#ABABAB]/30 light:bg-[#6F6F6F]/45 mt-16 mb-6" />
         
         <h2 className="text-2xl md:text-[2rem] text-white light:text-black font-normal tracking-tight mb-6">Core Philosophy</h2>
         
@@ -87,16 +87,16 @@ export default function DocsPage() {
 
           <ul className="space-y-5 mt-6 mb-12">
             <li className="flex gap-4 items-start">
-              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#FB460D] flex-shrink-0" />
+              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#ABABAB] light:bg-[#6F6F6F] flex-shrink-0" />
               <p>
-                <span className="text-[#FB460D] font-semibold tracking-wide">Offline First:</span>{" "}
+                <span className="text-[#ABABAB] light:text-[#6F6F6F] font-semibold tracking-wide">Offline First:</span>{" "}
                 By leveraging local LLMs, it provides intelligent auto-completion without relying on an internet connection.
               </p>
             </li>
             <li className="flex gap-4 items-start">
-              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#FB460D] flex-shrink-0" />
+              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#ABABAB] light:bg-[#6F6F6F] flex-shrink-0" />
               <p>
-                <span className="text-[#FB460D] font-semibold tracking-wide">Privacy Focused:</span>{" "}
+                <span className="text-[#ABABAB] light:text-[#6F6F6F] font-semibold tracking-wide">Privacy Focused:</span>{" "}
                 Your environment variables, API keys, and proprietary code never leave your machine.
               </p>
             </li>
@@ -104,36 +104,36 @@ export default function DocsPage() {
 
           <ul className="space-y-5 mt-6 mb-12">
             <li className="flex gap-4 items-start">
-              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#FB460D] flex-shrink-0" />
+              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#ABABAB] light:bg-[#6F6F6F] flex-shrink-0" />
               <p>
-                <span className="text-[#FB460D] font-semibold tracking-wide">Keyboard Centric:</span>{" "}
+                <span className="text-[#ABABAB] light:text-[#6F6F6F] font-semibold tracking-wide">Keyboard Centric:</span>{" "}
                 Built for speed and efficiency, allowing you to control your entire desktop using only your keyboard.
               </p>
             </li>
             <li className="flex gap-4 items-start">
-              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#FB460D] flex-shrink-0" />
+              <span className="mt-[0.6rem] w-[6px] h-[6px] bg-[#ABABAB] light:bg-[#6F6F6F] flex-shrink-0" />
               <p>
-                <span className="text-[#FB460D] font-semibold tracking-wide">Natural Language Execution:</span>{" "}
+                <span className="text-[#ABABAB] light:text-[#6F6F6F] font-semibold tracking-wide">Natural Language Execution:</span>{" "}
                 Execute complex shell commands and automate workflows simply by describing what you want to achieve.
               </p>
             </li>
           </ul>
 
           <div className="bg-[#1C1A1C] light:bg-gray-100/50 border border-white/10 light:border-black/10 p-8 mt-12 mb-12">
-            <h3 className="text-[#FB460D] font-mono text-sm tracking-widest mb-4">
+            <h3 className="text-[#ABABAB] light:text-[#6F6F6F] font-mono text-sm tracking-widest mb-4">
               {"// DESIGN PRINCIPLES"}
             </h3>
             <ul className="space-y-4 text-sm font-mono text-white/80 light:text-black/80">
               <li className="flex items-start gap-3">
-                <span className="text-[#FB460D] mt-1">01.</span>
+                <span className="text-[#ABABAB] light:text-[#6F6F6F] mt-1">01.</span>
                 <p>Zero configuration. It should just work.</p>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-[#FB460D] mt-1">02.</span>
+                <span className="text-[#ABABAB] light:text-[#6F6F6F] mt-1">02.</span>
                 <p>Keyboard first. Mouse optional.</p>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-[#FB460D] mt-1">03.</span>
+                <span className="text-[#ABABAB] light:text-[#6F6F6F] mt-1">03.</span>
                 <p>Performance over features. Speed is a feature.</p>
               </li>
             </ul>

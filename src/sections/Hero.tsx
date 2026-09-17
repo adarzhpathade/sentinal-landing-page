@@ -183,7 +183,7 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
               />
               <ScrambleHover
                 text="+ 100% LOCAL MODELS"
-                className="text-[#FB460D]/70 transition-colors hover:text-[#FB460D]"
+                className="text-[#ABABAB]/70 transition-colors hover:text-[#ABABAB]"
               />
             </div>
           </Container>

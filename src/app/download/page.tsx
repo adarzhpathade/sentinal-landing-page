@@ -29,7 +29,7 @@ const CliCommandBox = ({ command }: { command: string }) => {
       className="group relative w-full h-14 border border-black/10 bg-[#F9F9F9] hover:bg-[#EAEAEA] hover:border-black/30 transition-all duration-300 mt-2 flex items-center justify-between px-4 cursor-pointer"
     >
       <div className="flex items-center gap-3 overflow-hidden">
-        <span className="font-mono text-[#FB460D] text-[11px] font-bold opacity-70">$&gt;</span>
+        <span className="font-mono text-[#6F6F6F] text-[11px] font-bold opacity-70">$&gt;</span>
         <span className="font-mono text-xs sm:text-[13px] text-[#141314]/80 truncate">{command}</span>
       </div>
       <div className="shrink-0 ml-4 flex items-center justify-center w-6 h-6 rounded bg-black/5 group-hover:bg-black/10 transition-colors">
@@ -130,11 +130,11 @@ export default function DownloadPage() {
                   Available on<br />Mac, Linux and Windows.
                 </h1>
                 <div className="mt-2 flex items-center gap-3 font-mono text-[10px] tracking-[0.15em] text-[#141314] uppercase sm:text-[11px]">
-                  <div className="h-2 w-2 bg-[#FB460D]" />
+                  <div className="h-2 w-2 bg-[#6F6F6F]" />
                   <p>Cross-platform support.</p>
                 </div>
               </div>
-              <div className="mt-2 font-mono text-[11px] tracking-[0.15em] text-[#FB460D] uppercase sm:text-xs md:mt-0">
+              <div className="mt-2 font-mono text-[11px] tracking-[0.15em] text-[#6F6F6F] uppercase sm:text-xs md:mt-0">
                 {"// DOWNLOAD"}
               </div>
             </div>
@@ -144,13 +144,13 @@ export default function DownloadPage() {
               {/* MAC */}
               <div className="relative flex flex-col gap-8 w-full md:after:absolute md:after:right-[calc(-1.25rem-0.5px)] lg:after:right-[calc(-1.5rem-0.5px)] md:after:top-0 md:after:h-full md:after:w-[1px] md:after:bg-black/10">
                 <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 bg-[#FB460D]" />
+                  <div className="h-2 w-2 bg-[#6F6F6F]" />
                   <h2 className="font-sans text-2xl sm:text-3xl md:text-[32px] font-normal tracking-tight text-[#141314]">Mac</h2>
                 </div>
                 
                 <div className="flex flex-col w-full">
                   <div className="flex items-center justify-between w-full h-14">
-                    <ScrambleHover triggerOnView disableHover sequential scrambleSpeed={20} scrambledClassName="text-[#FB460D]" text="VERSION 10.14+" className="text-[15px] font-sans tracking-wide uppercase text-[#222]/80" />
+                    <ScrambleHover triggerOnView disableHover sequential scrambleSpeed={20} scrambledClassName="text-[#6F6F6F]" text="VERSION 10.14+" className="text-[15px] font-sans tracking-wide uppercase text-[#222]/80" />
                     <Button variant="primary" withSquareIcon className="ml-auto h-10">.dmg</Button>
                   </div>
                   <div className="mt-8">
@@ -162,21 +162,21 @@ export default function DownloadPage() {
               {/* WINDOWS */}
               <div className="relative flex flex-col gap-8 w-full md:after:absolute md:after:right-[calc(-1.25rem-0.5px)] lg:after:right-[calc(-1.5rem-0.5px)] md:after:top-0 md:after:h-full md:after:w-[1px] md:after:bg-black/10">
                 <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 bg-[#FB460D]" />
+                  <div className="h-2 w-2 bg-[#6F6F6F]" />
                   <h2 className="font-sans text-2xl sm:text-3xl md:text-[32px] font-normal tracking-tight text-[#141314]">Windows</h2>
                 </div>
                 
                 <div className="flex flex-col w-full">
                   <div className="flex items-center justify-between w-full h-14">
-                    <ScrambleHover triggerOnView disableHover sequential scrambleSpeed={20} scrambledClassName="text-[#FB460D]" text="Windows 10/11 x64" className="text-[15px] font-sans tracking-wide text-[#222]/80" />
+                    <ScrambleHover triggerOnView disableHover sequential scrambleSpeed={20} scrambledClassName="text-[#6F6F6F]" text="Windows 10/11 x64" className="text-[15px] font-sans tracking-wide text-[#222]/80" />
                     <Button variant="primary" withSquareIcon className="ml-auto h-10">.exe</Button>
                   </div>
                   <div className="flex items-center justify-between w-full h-14">
-                    <ScrambleHover triggerOnView disableHover sequential scrambleSpeed={20} scrambledClassName="text-[#FB460D]" text="Windows 10/11 x86" className="text-[15px] font-sans tracking-wide text-[#222]/80" />
+                    <ScrambleHover triggerOnView disableHover sequential scrambleSpeed={20} scrambledClassName="text-[#6F6F6F]" text="Windows 10/11 x86" className="text-[15px] font-sans tracking-wide text-[#222]/80" />
                     <Button variant="primary" withSquareIcon className="ml-auto h-10">.exe</Button>
                   </div>
                   <div className="flex items-center justify-between w-full h-14">
-                    <ScrambleHover triggerOnView disableHover sequential scrambleSpeed={20} scrambledClassName="text-[#FB460D]" text="Windows 10/11 arm64" className="text-[15px] font-sans tracking-wide text-[#222]/80" />
+                    <ScrambleHover triggerOnView disableHover sequential scrambleSpeed={20} scrambledClassName="text-[#6F6F6F]" text="Windows 10/11 arm64" className="text-[15px] font-sans tracking-wide text-[#222]/80" />
                     <Button variant="primary" withSquareIcon className="ml-auto h-10">.exe</Button>
                   </div>
                   <div className="mt-8">
@@ -188,13 +188,13 @@ export default function DownloadPage() {
               {/* LINUX */}
               <div className="flex flex-col gap-8 w-full">
                 <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 bg-[#FB460D]" />
+                  <div className="h-2 w-2 bg-[#6F6F6F]" />
                   <h2 className="font-sans text-2xl sm:text-3xl md:text-[32px] font-normal tracking-tight text-[#141314]">Linux</h2>
                 </div>
                 
                 <div className="flex flex-col w-full">
                   <div className="flex items-center justify-between w-full h-14">
-                    <ScrambleHover triggerOnView disableHover sequential scrambleSpeed={20} scrambledClassName="text-[#FB460D]" text="64-BIT LINUX" className="text-[15px] font-sans tracking-wide uppercase text-[#222]/80" />
+                    <ScrambleHover triggerOnView disableHover sequential scrambleSpeed={20} scrambledClassName="text-[#6F6F6F]" text="64-BIT LINUX" className="text-[15px] font-sans tracking-wide uppercase text-[#222]/80" />
                     <Button variant="primary" withSquareIcon className="ml-auto h-10">.deb</Button>
                   </div>
                   <div className="mt-8">
@@ -214,11 +214,11 @@ export default function DownloadPage() {
                   Use Sentinel<br />anytime, anywhere.
                 </h1>
                 <div className="mt-2 flex items-center gap-3 font-mono text-[10px] tracking-[0.15em] text-[#141314] uppercase sm:text-[11px]">
-                  <div className="h-2 w-2 bg-[#FB460D]" />
+                  <div className="h-2 w-2 bg-[#6F6F6F]" />
                   <p>Take your terminal everywhere.</p>
                 </div>
               </div>
-              <div className="mt-2 font-mono text-[11px] tracking-[0.15em] text-[#FB460D] uppercase sm:text-xs md:mt-0">
+              <div className="mt-2 font-mono text-[11px] tracking-[0.15em] text-[#6F6F6F] uppercase sm:text-xs md:mt-0">
                 {"// USE CASES"}
               </div>
             </div>
@@ -258,7 +258,7 @@ export default function DownloadPage() {
         style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
       >
         <div className="fixed bottom-0 left-0 h-[70svh] md:h-[80svh] w-full">
-          <AnimatedFooter charColor="#b34a00" revealOnScroll={false} />
+          <AnimatedFooter charColor="#8f8f8f" revealOnScroll={false} />
         </div>
       </div>
     </main>

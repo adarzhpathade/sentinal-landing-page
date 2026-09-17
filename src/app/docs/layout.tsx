@@ -24,7 +24,7 @@ const SidebarContent = React.memo(({ isMobile = false, pathname, isLightMode, to
     {DOCS_NAVIGATION.map((group, groupIdx) => (
       <div key={groupIdx} className="flex flex-col gap-3">
         {group.title && (
-          <h3 className="docs-sidebar-item text-[#FB460D] tracking-widest text-sm mt-4">
+          <h3 className="docs-sidebar-item text-[#ABABAB] light:text-[#6F6F6F] tracking-widest text-sm mt-4">
             {group.title}
           </h3>
         )}
@@ -43,7 +43,7 @@ const SidebarContent = React.memo(({ isMobile = false, pathname, isLightMode, to
                   <motion.span
                     layoutId={isMobile ? "mobile-sidebar-active-indicator" : "sidebar-active-indicator"}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    className="w-[10px] h-[10px] bg-[#FB460D] absolute left-0 flex-shrink-0"
+                    className="w-[10px] h-[10px] bg-[#ABABAB] light:bg-[#6F6F6F] absolute left-0 flex-shrink-0"
                   />
                 )}
                 <Link

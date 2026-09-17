@@ -284,7 +284,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
                 className={cn(
-                  "group pointer-events-auto flex items-center gap-3 font-mono text-xs font-normal uppercase tracking-[0.08em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB460D] sm:text-sm",
+                  "group pointer-events-auto flex items-center gap-3 font-mono text-xs font-normal uppercase tracking-[0.08em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ABABAB] sm:text-sm",
                   textColor,
                   "hover:opacity-70"
                 )}
@@ -300,14 +300,14 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                 <span className="flex w-5 flex-col gap-[4px]">
                   <span
                     className={cn(
-                      "h-[2px] w-full transition-all duration-300 origin-center group-hover:bg-[#FB460D]",
+                      "h-[2px] w-full transition-all duration-300 origin-center group-hover:bg-[#ABABAB]",
                       hamburgerColor,
                       isOpen && "translate-y-[3px] rotate-45"
                     )}
                   />
                   <span
                     className={cn(
-                      "h-[2px] w-full transition-all duration-300 origin-center group-hover:bg-[#FB460D]",
+                      "h-[2px] w-full transition-all duration-300 origin-center group-hover:bg-[#ABABAB]",
                       hamburgerColor,
                       isOpen && "-translate-y-[3px] -rotate-45"
                     )}
@@ -366,7 +366,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                           {/* Active square indicator */}
                           <div
                             className={cn(
-                              "h-[14px] shrink-0 bg-[#FB460D] transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]",
+                              "h-[14px] shrink-0 bg-[#ABABAB] transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]",
                               isActive && isOpen ? "w-[14px] opacity-100" : "w-0 opacity-0"
                             )}
                             style={{ 
@@ -421,7 +421,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                             )}
                           >
                             <div 
-                              className="h-3 w-0 shrink-0 bg-[#FB460D] transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:w-3 group-hover:mr-2" 
+                              className="h-3 w-0 shrink-0 bg-[#ABABAB] transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:w-3 group-hover:mr-2" 
                               aria-hidden="true" 
                             />
                             <div className="transition-transform duration-300">
@@ -452,7 +452,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                             )}
                           >
                             <div 
-                              className="h-3 w-0 shrink-0 bg-[#FB460D] transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:w-3 group-hover:mr-2" 
+                              className="h-3 w-0 shrink-0 bg-[#ABABAB] transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:w-3 group-hover:mr-2" 
                               aria-hidden="true" 
                             />
                             <div className="transition-transform duration-300">
@@ -487,7 +487,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                           )}
                         >
                           <div 
-                            className="mr-2 h-3 w-3 shrink-0 bg-[#FB460D]" 
+                            className="mr-2 h-3 w-3 shrink-0 bg-[#ABABAB]" 
                             aria-hidden="true" 
                           />
                           <span>{action.label}</span>
@@ -509,7 +509,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                         text={NAVIGATION_DATA.menuActions.bottom.label} 
                         scrambleSpeed={20}
                         sequential
-                        scrambledClassName="text-[#FB460D]"
+                        scrambledClassName="text-[#ABABAB]"
                       />
                     </a>
                   </div>

@@ -16,7 +16,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 /**
  * Reusable Button component matching the exact visual styling of the uploaded reference design.
- * Primary buttons feature sharp rectangular corners, bright orange (#FB460D) fill, dark black text,
+ * Primary buttons feature sharp rectangular corners, refined grey (#ABABAB) fill, dark black text,
  * and an attached square icon box separated by a clean 2px gap.
  */
 export const Button = React.forwardRef<
@@ -77,11 +77,11 @@ export const Button = React.forwardRef<
     };
 
     const baseStyles =
-      "inline-flex items-center justify-center font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB460D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#141314] disabled:opacity-50 disabled:pointer-events-none select-none rounded-none";
+      "inline-flex items-center justify-center font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ABABAB] focus-visible:ring-offset-2 focus-visible:ring-offset-[#141314] disabled:opacity-50 disabled:pointer-events-none select-none rounded-none";
 
     const variantStyles = {
       primary:
-        "bg-[#FB460D] text-[#141314] hover:bg-[#FF5C26] px-10 py-2 text-xs sm:text-sm tracking-normal uppercase font-mono font-normal",
+        "bg-[#ABABAB] text-[#141314] hover:bg-[#BEBEBE] px-10 py-2 text-xs sm:text-sm tracking-normal uppercase font-mono font-normal",
       black:
         "bg-[#141314] text-white hover:bg-[#000000] px-10 py-2 text-xs sm:text-sm tracking-normal uppercase font-mono font-normal",
       secondary:
@@ -132,10 +132,10 @@ export const Button = React.forwardRef<
       const isBlack = variant === "black";
       const iconBgClass = isBlack 
         ? "bg-[#141314] text-white group-hover:bg-[#000000] hover:bg-[#000000]" 
-        : "bg-[#FB460D] text-[#141314] group-hover:bg-[#FF5C26] hover:bg-[#FF5C26]";
+        : "bg-[#ABABAB] text-[#141314] group-hover:bg-[#BEBEBE] hover:bg-[#BEBEBE]";
       const focusRingClass = isBlack
         ? "focus-visible:ring-[#141314]"
-        : "focus-visible:ring-[#FB460D]";
+        : "focus-visible:ring-[#ABABAB]";
 
       if (href) {
         return (

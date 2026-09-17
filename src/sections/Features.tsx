@@ -102,12 +102,12 @@ export const Features: React.FC<FeaturesProps> = ({ className }) => {
                 Powerful Features.
               </h2>
               <div className="mt-2 flex items-center gap-3 font-mono text-[10px] tracking-[0.15em] text-[#141314] uppercase sm:text-[11px]">
-                <div className="h-2 w-2 bg-[#FB460D]" />
+                <div className="h-2 w-2 bg-[#ABABAB]" />
                 <p>Explore the capabilities.</p>
               </div>
             </div>
 
-            <div className="mt-2 font-mono text-[11px] tracking-[0.15em] text-[#FB460D] uppercase sm:text-xs md:mt-0">
+            <div className="mt-2 font-mono text-[11px] tracking-[0.15em] text-[#ABABAB] uppercase sm:text-xs md:mt-0">
               {"// FEATURES"}
             </div>
           </div>
@@ -155,7 +155,7 @@ export const FeatureCard = ({ feature }: { feature: Feature }) => {
       <div className="mb-4 flex w-fit items-center">
         <div
           className={cn(
-            "h-2 overflow-hidden bg-[#FB460D] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+            "h-2 overflow-hidden bg-[#ABABAB] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
             triggerMobile
               ? "mr-3 w-2"
               : "mr-0 w-0 md:group-hover:mr-3 md:group-hover:w-2"
@@ -172,7 +172,7 @@ export const FeatureCard = ({ feature }: { feature: Feature }) => {
           <ScrambleHover
             text={feature.title}
             sequential={true}
-            scrambledClassName="text-[#FB460D]"
+            scrambledClassName="text-[#ABABAB]"
             triggerOnView="mobileOnly"
             customHoverState={isHovered}
           />
