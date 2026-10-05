@@ -573,7 +573,7 @@ export function AnimatedFooter({
           {/* Center column — Copyright */}
           <div className="hidden md:flex flex-col items-center justify-start text-center">
             <p className="mb-2">© 2026</p>
-            <p className="mb-1 text-white font-sans text-sm">Sentinel.</p>
+            <p className="mb-1 text-white font-sans text-sm">Cero.</p>
             <p>The AI-native terminal.</p>
           </div>
 
@@ -596,7 +596,7 @@ export function AnimatedFooter({
             </a>
             <div className="h-4" />
             <span className="text-[#ffffff]/30 font-semibold tracking-widest uppercase text-[10px] mb-1">Source Code</span>
-            <a href="https://github.com/NetPranav/Sentinal-Terminal" target="_blank" rel="noopener noreferrer" className="group relative hover:text-white transition-colors pb-[4px] w-fit">
+            <a href="https://github.com/NetPranav/Cero-Terminal" target="_blank" rel="noopener noreferrer" className="group relative hover:text-white transition-colors pb-[4px] w-fit">
               <span>GITHUB REPOSITORY</span>
               <span className="absolute bottom-0 left-0 h-[1px] w-full overflow-hidden" aria-hidden="true">
                 <span className="absolute inset-0 bg-[#ffffff]/20 transition-transform delay-[240ms] duration-300 ease-out group-hover:translate-x-full group-hover:delay-0" />
@@ -612,7 +612,7 @@ export function AnimatedFooter({
           {/* Mobile Copyright (Hidden on Desktop) */}
           <div className="flex md:hidden flex-col items-center justify-center text-center">
             <p className="mb-2">© 2026</p>
-            <p className="mb-1 text-white font-sans text-sm">Sentinel.</p>
+            <p className="mb-1 text-white font-sans text-sm">Cero.</p>
             <p>The AI-native terminal.</p>
           </div>
 

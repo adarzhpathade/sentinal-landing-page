@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sentinel - The AI-Native Terminal",
+  title: "Cero - The AI-Native Terminal",
   description:
     "Execute shell commands, automate workflows, and control your desktop using natural language—all completely offline.",
 };
@@ -37,7 +37,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                if (localStorage.getItem('sentinel-theme') === 'light') {
+                if (localStorage.getItem('cero-theme') === 'light' || localStorage.getItem('sentinel-theme') === 'light') {
                   document.documentElement.classList.add('light-mode');
                 }
               } catch (e) {}

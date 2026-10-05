@@ -18,8 +18,6 @@ export default function ChessGridTransition({ children }) {
   const gridRef = useRef(null)
   const bgRef = useRef(null)
 
-  const [mounted, setMounted] = useState(false)
-
   const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
   const [viewportMeasured, setViewportMeasured] = useState(false)
@@ -105,8 +103,6 @@ export default function ChessGridTransition({ children }) {
           const colIndex = i % cols
           gsap.set(cell, { xPercent: -(colIndex + 2) * 100 })
         })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        setTimeout(() => setMounted(true), 0)
         return
       }
 

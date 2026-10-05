@@ -33,13 +33,13 @@ export interface NavigationConfig {
 }
 
 export const NAVIGATION_DATA: NavigationConfig = {
-  brand: "SENTINAL",
+  brand: "CERO",
   brandUrl: "/",
   menuTrigger: "MENU",
   menuClose: "CLOSE",
   ctaButton: {
     label: "DOWNLOAD",
-    href: "/download",
+    href: "/download?auto=true",
   },
   items: [
     { id: "home", label: "Home", href: "/" },
@@ -61,9 +61,9 @@ export const NAVIGATION_DATA: NavigationConfig = {
   },
   menuActions: {
     top: [
-      { label: "Get Sentinel Now", href: "/download" },
+      { label: "Get Cero Now", href: "/download?auto=true" },
       { label: "Check Docs", href: "/docs", external: true },
     ],
-    bottom: { label: "github/sentinel", href: "https://github.com/NetPranav/Sentinal-Terminal", external: true },
+    bottom: { label: "github/cero", href: "https://github.com/NetPranav/Cero-Terminal", external: true },
   },
 };

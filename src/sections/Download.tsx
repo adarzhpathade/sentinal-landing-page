@@ -116,14 +116,14 @@ export const Download: React.FC<DownloadProps> = ({ className }) => {
                 variant="primary" 
                 withSquareIcon 
                 className="w-[200px] whitespace-nowrap"
-                href="/download"
+                href="/download?auto=true"
               >
                 DOWNLOAD
               </Button>
               <Button 
                 variant="black" 
                 className="w-[200px] whitespace-nowrap"
-                href="https://github.com/NetPranav/Sentinal-Terminal"
+                href="https://github.com/NetPranav/Cero-Terminal"
                 target="_blank"
                 rel="noopener noreferrer"
               >

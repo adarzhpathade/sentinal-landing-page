@@ -19,14 +19,14 @@ export interface NavbarProps {
 /**
  * Navbar component with a full-width menu panel.
  *
- * Closed state: SENTINAL (left) · MENU ═══ (center) · DOWNLOAD ▪ (right)
- * Open state:   SENTINAL (left) · CLOSE ═══ (center) · DOWNLOAD ▪ (right)
+ * Closed state: CERO (left) · MENU ═══ (center) · DOWNLOAD ▪ (right)
+ * Open state:   CERO (left) · CLOSE ═══ (center) · DOWNLOAD ▪ (right)
  *               ┌──────────────────────────────────────────────────────────┐
  *               │ Nav links        │ Info column     │ Action column      │
- *               │ ■ Home           │ Developed by    │ Get Sentinel Now   │
+ *               │ ■ Home           │ Developed by    │ Get Cero Now       │
  *               │   Features       │                 │ Check Docs         │
  *               │   How it Works ? │                 │                    │
- *               │   FAQ's          │ Any Queries ?   │ github/sentinel    │
+ *               │   FAQ's          │ Any Queries ?   │ github/cero        │
  *               │   Get it Now     │                 │                    │
  *               └──────────────────────────────────────────────────────────┘
  */
@@ -48,7 +48,6 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
     const menuTl = useRef<gsap.core.Timeline | null>(null);
     const menuPanelRef = useRef<HTMLDivElement>(null);
     const navItemsRef = useRef<Array<HTMLAnchorElement | null>>([]);
-    const blockRef = useRef<HTMLDivElement>(null);
     const infoPanelRef = useRef<HTMLDivElement>(null);
     const actionPanelRef = useRef<HTMLDivElement>(null);
 
@@ -274,7 +273,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                   "pointer-events-auto font-sans text-lg font-bold tracking-tight transition-colors duration-300 sm:text-xl",
                   textColor
                 )}
-                aria-label="Sentinel Home"
+                aria-label="Cero Home"
               >
                 {NAVIGATION_DATA.brand}
               </a>

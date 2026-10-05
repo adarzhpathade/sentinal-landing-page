@@ -16,14 +16,14 @@ export interface HeroContentConfig {
 
 export const HERO_DATA: HeroContentConfig = {
   title: {
-    line1: "Sentinel / The AI-Native",
+    line1: "Cero / The AI-Native",
     line2: "Terminal.",
   },
   description:
     "Execute shell commands, automate workflows, and control your desktop using natural language—all completely offline.",
   primaryCta: {
     label: "DOWNLOAD",
-    href: "/download",
+    href: "/download?auto=true",
     variant: "primary",
   },
   secondaryCta: {

@@ -1,31 +1,31 @@
-# Sentinel Terminal Website
+# Cero Terminal Website
 
 <p align="center">
-  <img src="./public/cover.png" alt="Sentinel Terminal" width="120" />
+  <img src="./public/cover.png" alt="Cero Terminal" width="120" />
 </p>
 
 <p align="center">
-  <strong>The official landing page for Sentinel Terminal.</strong>
+  <strong>The official landing page for Cero Terminal.</strong>
 </p>
 
 <p align="center">
-  Showcasing the vision, features, documentation, and open-source community behind Sentinel Terminal.
+  Showcasing the vision, features, documentation, and open-source community behind Cero Terminal.
 </p>
 
 ---
 
 ## About
 
-This repository contains the source code for the **official Sentinel Terminal website**.
+This repository contains the source code for the **official Cero Terminal website**.
 
-The website serves as the primary entry point for developers, contributors, and users interested in Sentinel Terminal.
+The website serves as the primary entry point for developers, contributors, and users interested in Cero Terminal.
 
 It is designed to provide a polished product experience while directing users to the main open-source project, documentation, releases, and community resources.
 
 > **Note**
 >
 > This repository only contains the website.
-> The Sentinel Terminal application is developed in a separate repository.
+> The Cero Terminal application is developed in a separate repository.
 
 ---
 
@@ -48,13 +48,13 @@ It is designed to provide a polished product experience while directing users to
 
 The website is intended to:
 
-- Introduce Sentinel Terminal
+- Introduce Cero Terminal
 - Explain what the project is
 - Showcase product capabilities
 - Provide installation instructions
 - Redirect users to the main GitHub repository
 - Help onboard new contributors
-- Act as the public face of the Sentinel ecosystem
+- Act as the public face of the Cero ecosystem
 
 ---
 
@@ -137,17 +137,17 @@ lib/
 
 ---
 
-## About Sentinel Terminal
+## About Cero Terminal
 
-Sentinel Terminal is an AI-native terminal that combines natural language understanding, intelligent workflow execution, and secure operating system capabilities into a modern developer experience.
+Cero Terminal is an AI-native terminal that combines natural language understanding, intelligent workflow execution, and secure operating system capabilities into a modern developer experience.
 
-Unlike traditional terminals that only execute commands, Sentinel understands intent and can perform multi-step workflows while maintaining transparency and developer control.
+Unlike traditional terminals that only execute commands, Cero understands intent and can perform multi-step workflows while maintaining transparency and developer control.
 
 ---
 
 ## About Magnm
 
-Sentinel Terminal is being built under **Magnm**, an open-source initiative focused on building modern AI-powered developer tools.
+Cero Terminal is being built under **Magnm**, an open-source initiative focused on building modern AI-powered developer tools.
 
 ---
 
@@ -163,7 +163,7 @@ https://github.com/NetPranav/Sentinal-Terminal
 
 ## License
 
-This project is licensed under the same license as the Sentinel ecosystem.
+This project is licensed under the same license as the Cero ecosystem.
 
 See the LICENSE file for details.
 

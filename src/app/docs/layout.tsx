@@ -100,7 +100,7 @@ export default function DocsLayout({
   const toggleTheme = () => {
     setIsLightMode((prev) => {
       const newMode = !prev;
-      localStorage.setItem("sentinel-theme", newMode ? "light" : "dark");
+      localStorage.setItem("cero-theme", newMode ? "light" : "dark");
       if (newMode) {
         document.documentElement.classList.add("light-mode");
       } else {
@@ -140,7 +140,7 @@ export default function DocsLayout({
         {/* Mobile Top Bar */}
         <div className="md:hidden sticky top-0 z-50 flex items-center justify-between px-6 h-16 bg-[#141314]/90 light:bg-[#FAFAFA]/90 backdrop-blur-md border-b border-white/5 light:border-black/5">
           <Link href="/" className="font-sans font-medium text-lg tracking-tight">
-            Sentinel
+            Cero
           </Link>
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

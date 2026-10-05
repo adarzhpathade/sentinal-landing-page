@@ -59,7 +59,7 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
         "relative flex min-h-[100svh] w-full flex-col justify-between overflow-x-hidden bg-[#141314] text-white",
         className
       )}
-      aria-label="Sentinel Hero Section"
+      aria-label="Cero Hero Section"
     >
       {/* Interactive Gradient Blinds Background */}
       <div ref={bgRef} className="absolute inset-0 z-0 h-full w-full">

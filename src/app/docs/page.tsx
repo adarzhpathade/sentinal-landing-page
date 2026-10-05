@@ -9,7 +9,7 @@ export default function DocsPage() {
 
   useGSAP(() => {
     const tl = gsap.timeline();
-    
+
     tl.from(
       ".docs-content-title",
       {
@@ -46,7 +46,7 @@ export default function DocsPage() {
     <div ref={contentRef} className="pt-16 px-6 md:pt-32 md:px-12 lg:px-24 pb-24 w-full">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
         <h1 className="docs-content-title text-3xl md:text-[2.75rem] leading-none font-normal tracking-tight">
-          What is Sentinel
+          What is Cero
         </h1>
         <div className="docs-content-header text-[#ABABAB] light:text-[#6F6F6F] tracking-widest text-sm mt-2">
           {"// GETTING STARTED"}
@@ -56,31 +56,31 @@ export default function DocsPage() {
       <div className="docs-content-body mt-16 max-w-3xl">
         <div className="space-y-6 text-sm font-mono text-white/90 light:text-black/90">
           <p className="text-base leading-relaxed font-medium">
-            Sentinel is a next-generation, AI-native terminal designed for developers, DevOps engineers, 
+            Cero is a next-generation, AI-native terminal designed for developers, DevOps engineers,
             and power users that aims to enhance your local workflow.
           </p>
-          
+
           <p className="text-white/60 light:text-black/60 leading-relaxed">
-            This is not your typical command-line interface, which means you won&apos;t find a standard set of 
+            This is not your typical command-line interface, which means you won&apos;t find a standard set of
             generic prompt behaviors or unpredictable cloud dependencies here.
           </p>
-          
+
           <p className="text-white/60 light:text-black/60 leading-relaxed">
-            Basically, this terminal is here to help you automate complex workflows and system administration 
+            Basically, this terminal is here to help you automate complex workflows and system administration
             tasks by leveraging natural language, without ever leaving your keyboard.
           </p>
         </div>
 
         <div className="w-full h-[1px] bg-[#ABABAB]/30 light:bg-[#6F6F6F]/45 mt-16 mb-6" />
-        
+
         <h2 className="text-2xl md:text-[2rem] text-white light:text-black font-normal tracking-tight mb-6">Core Philosophy</h2>
-        
+
         <div className="space-y-6 text-sm text-white/60 light:text-black/60 leading-relaxed font-mono">
           <p>
-            The goal of Sentinel is simple - provide a flexible, blazingly fast, and completely private 
+            The goal of Cero is simple - provide a flexible, blazingly fast, and completely private
             terminal that takes your productivity to the next level.
           </p>
-          
+
           <p>
             To make that happen, the project is committed to the following principles:
           </p>
@@ -141,7 +141,7 @@ export default function DocsPage() {
 
           <h3 className="text-xl text-white light:text-black font-normal tracking-tight mt-12 mb-4">Local Execution</h3>
           <p className="font-mono">
-            Every command you generate and execute runs securely on your machine, giving you full visibility 
+            Every command you generate and execute runs securely on your machine, giving you full visibility
             and control over the AI&apos;s actions, not just a black box output.
           </p>
         </div>

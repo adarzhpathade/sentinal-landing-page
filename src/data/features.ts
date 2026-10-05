@@ -7,38 +7,38 @@ export interface Feature {
 export const FEATURES_DATA: Feature[] = [
   {
     id: "feature-1",
-    title: "Write Naturally.",
+    title: "Natural Shell & OS Control.",
     description:
-      "Type what you want in plain English.\nNo memorizing commands. No syntax lookup.",
+      "Control Wi-Fi, audio, dark mode, and apps in plain English.\nPrefix with > for instant local tool orchestration.",
   },
   {
     id: "feature-2",
-    title: "Execute Securely.",
+    title: "Self-Healing SERL Engine.",
     description:
-      "Review every generated command before execution.\nStay in control with safe, transparent workflows.",
+      "Catches nonzero exit codes and parses runtime stderr.\nOffers 3-strike automated diagnostic remediation.",
   },
   {
     id: "feature-3",
-    title: "Works Completely Offline.",
+    title: "100% Offline Local Models.",
     description:
-      "All AI processing happens locally on your machine.\nNo cloud dependency. No data leaves your device.",
+      "Runs embedded quantized models (0.5B to 4B parameters).\nAccelerated by Metal and Vulkan. No cloud required.",
   },
   {
     id: "feature-4",
-    title: "Automate Repetitive Tasks.",
+    title: "Declarative .flow Automation.",
     description:
-      "Turn multi-step workflows into reusable automations.\nSave time on everyday development tasks.",
+      "Turn multi-step terminal procedures into .flow scripts.\nExecute complex setups with a single companion CLI command.",
   },
   {
     id: "feature-5",
-    title: "Understands Your Environment.",
+    title: "Universal IDE Launchers.",
     description:
-      "Recognizes your shell, files, and project context.\nDelivers accurate, context-aware assistance.",
+      "Open projects in VS Code, Cursor, Antigravity, or Xcode.\nNaturally resolves target paths to your active workspace.",
   },
   {
     id: "feature-6",
-    title: "Developer Focused.",
+    title: "Zero-Trust Security Gate.",
     description:
-      "Built for developers and power users.\nA modern terminal for maximum productivity.",
+      "Interactive permission holds for destructive operations.\nAll API secrets securely kept in your native OS Keychain.",
   },
 ];
