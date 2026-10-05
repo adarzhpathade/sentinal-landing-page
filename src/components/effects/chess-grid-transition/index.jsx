@@ -134,7 +134,6 @@ export default function ChessGridTransition({ children }) {
         gsap.set(cell, { xPercent: -(colIndex + 2) * 100 })
       })
     }
-    setMounted(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rows, viewportMeasured])
 
