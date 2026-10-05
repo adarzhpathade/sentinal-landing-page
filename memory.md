@@ -1,59 +1,56 @@
-# Memory — Rebrand to Cero, Releases Integration & Docs Expansion
+# Memory — Rebrand to Cero, Releases Integration, Documentation & Production Verification
 
-Last updated: 2026-10-05 14:07:00
+Last updated: 2026-10-05 14:18:00
 
 ## What was built
 
-- **Rebranded to Cero**:
-  - Replaced Sentinel with Cero across the entire codebase (navbar, hero, FAQ, how-it-works, footer, docs, and metadata).
+- **Full Platform Rebrand to Cero**:
+  - Rebranded Sentinel to Cero across the entire site: navigation (`src/data/navigation.ts`), hero (`src/data/hero.ts`), features (`src/data/features.ts`), FAQ (`src/data/faq.ts`), how-it-works (`src/data/howItWorks.ts`), footer (`src/components/ui/AnimatedFooter.tsx`), docs (`src/app/docs/*`), `package.json`, and `README.md`.
   - Updated repository links to `https://github.com/NetPranav/Cero-Terminal`.
-- **Direct GitHub Releases Linking & Option Cleanup**:
-  - Created [src/data/releases.ts](file:///e:/Projects/Landing%20Pages/Sentinel%20Landing%20Page/src/data/releases.ts) containing structured URLs for all published assets in `NetPranav/Cero-Terminal` (macOS v2.2.0, Windows v2.2.0, Linux v2.2.3) and client-side OS detection.
-  - **Removed nonexistent download options**: Dropped Windows x86 and Windows ARM64 options that have no release assets on GitHub.
-  - **Added real release options**: Added Apple Silicon (`.dmg`) & Intel (`.dmg`) for Mac, Setup (`.exe`) & MSI Package (`.msi`) for Windows, and Debian (`.deb`), Universal (`.AppImage`), and Fedora/RHEL (`.rpm`) for Linux.
-  - **Auto-download trigger**: Added `auto=true` support on `/download` and connected Hero / Navbar / Homepage CTA buttons to `/download?auto=true` for 1-click downloads with a dismissible feedback notice.
-- **Coming Soon Badges for CLI Package Managers**:
-  - Updated `CliCommandBox` in [src/app/download/page.tsx](file:///e:/Projects/Landing%20Pages/Sentinel%20Landing%20Page/src/app/download/page.tsx) with a clean `Coming Soon` badge and clear labels (`Homebrew`, `Windows Package Manager`, `Install Script`).
-  - Added a `Coming Soon` tag in [src/app/docs/installation/page.tsx](file:///e:/Projects/Landing%20Pages/Sentinel%20Landing%20Page/src/app/docs/installation/page.tsx) for unreleased package manager formulas while maintaining pre-built desktop instructions.
-- **Homepage Data Alignment (Features, FAQ, How It Works)**:
-  - Updated [src/data/features.ts](file:///e:/Projects/Landing%20Pages/Sentinel%20Landing%20Page/src/data/features.ts) to highlight Cero's flagship v2.2 capabilities:
-    1. Natural Shell & OS Control (`> turn wifi off`, dark mode, audio)
-    2. Self-Healing SERL Engine (3-strike diagnostic remediation)
-    3. 100% Offline Local Models (0.5B to 4B tiers with Metal/Vulkan)
-    4. Declarative .flow Automation (`cero setup.flow`)
-    5. Universal IDE Launchers (VS Code, Cursor, Antigravity, Xcode)
-    6. Zero-Trust Security Gate (Destructive operation holds & OS Keychain vault)
-  - Updated [src/data/faq.ts](file:///e:/Projects/Landing%20Pages/Sentinel%20Landing%20Page/src/data/faq.ts) with direct answers to developer questions:
-    - Supported platforms & release package formats (DMG, EXE, MSI, DEB, RPM, AppImage)
-    - Hardware RAM recommendations (8GB for 0.5B/1.5B, 16GB+ for 3B/4B)
-    - How the SERL self-healing feedback loop works
-    - Native OS system settings control
-    - The `@netpranav/cero-cli` global companion launcher & `.flow` files
-    - Zero-Trust security & OS Keychain credential storage
-  - Updated [src/data/howItWorks.ts](file:///e:/Projects/Landing%20Pages/Sentinel%20Landing%20Page/src/data/howItWorks.ts) to reflect the explicit `>` prompt prefix, zero-trust permission checks, and the SERL self-healing loop.
-- **Comprehensive Documentation Expansion**:
-  - Created [src/data/commands.ts](file:///e:/Projects/Landing%20Pages/Sentinel%20Landing%20Page/src/data/commands.ts) with categorized dictionary data for Cero's full feature set.
-  - Rebuilt [src/app/docs/commands/page.tsx](file:///e:/Projects/Landing%20Pages/Sentinel%20Landing%20Page/src/app/docs/commands/page.tsx) with category filter pills, real-time live search, interactive 1-click clipboard copy with status feedback, and tool mapping tags.
-  - Updated [src/app/docs/page.tsx](file:///e:/Projects/Landing%20Pages/Sentinel%20Landing%20Page/src/app/docs/page.tsx) with offline local model details, SERL overview, and interactive cards linking to subpages.
-  - Updated [src/app/docs/installation/page.tsx](file:///e:/Projects/Landing%20Pages/Sentinel%20Landing%20Page/src/app/docs/installation/page.tsx) with macOS unnotarized "Open Anyway" instructions, Windows SmartScreen bypass, Linux package manager installation commands, companion `@netpranav/cero-cli` launcher, and build from source steps.
-  - Updated [src/app/docs/releases/page.tsx](file:///e:/Projects/Landing%20Pages/Sentinel%20Landing%20Page/src/app/docs/releases/page.tsx) to reflect v2.2.0/v2.2.3 milestone.
-  - Updated [src/app/docs/architecture/page.tsx](file:///e:/Projects/Landing%20Pages/Sentinel%20Landing%20Page/src/app/docs/architecture/page.tsx) detailing Tauri v2 + Rust core, WebGL xterm.js canvas, embedded llama.cpp local inference (Metal/Vulkan), SERL diagnostics, and OS keychain credential security.
+- **Direct GitHub Releases Linking**:
+  - Created `src/data/releases.ts` with direct CDN download URLs for `NetPranav/Cero-Terminal` releases (macOS v2.2.0, Windows v2.2.0, Linux v2.2.3) and client-side OS detection.
+  - Sourced and validated all active binary packages: Apple Silicon DMG, Intel Mac DMG, Windows 10/11 x64 Setup EXE & MSI, and Linux DEB, RPM, AppImage, and Arch PKG.
+  - Removed nonexistent download options (Windows x86, Windows ARM64).
+  - Added 1-click auto-download parameter (`/download?auto=true`) on the Hero CTA, Navbar, and Download section, with dismissible status notification.
+  - Added "Coming Soon" badges to unreleased CLI package managers (Homebrew, Windows Package Manager, curl script).
+- **Documentation Suite Expansion**:
+  - Created `src/data/commands.ts` storing structured command dictionary data.
+  - Rebuilt `src/app/docs/commands/page.tsx` with category filters (System Settings, IDEs & Editors, Git & Workflow, SERL Recovery, Teaching & Rules, CLI & Flows), real-time search, tool mappings, and 1-click clipboard copy with visual confirmation.
+  - Updated `src/app/docs/page.tsx` with offline local model tiers (0.5B to 4B parameters), SERL self-healing overview, and exploration cards.
+  - Updated `src/app/docs/installation/page.tsx` with macOS unnotarized "Open Anyway" guidance, Windows SmartScreen bypass, Linux package manager installation commands, companion `@netpranav/cero-cli` global launcher, and source build instructions.
+  - Updated `src/app/docs/releases/page.tsx` detailing v2.2.0/v2.2.3 cross-platform releases, SERL diagnostics, and native system settings control.
+  - Updated `src/app/docs/architecture/page.tsx` documenting Tauri v2 + Rust core, WebGL xterm.js canvas, embedded llama.cpp local inference (Metal/Vulkan), SERL diagnostics, and OS keychain credential security.
+- **Homepage Data Alignment**:
+  - Updated `src/data/features.ts` with Cero's 6 technical pillars (Natural Shell & OS Control, Self-Healing SERL Engine, 100% Offline Local Models, Declarative .flow Automation, Universal IDE Launchers, Zero-Trust Security Gate).
+  - Updated `src/data/faq.ts` addressing real developer inquiries (platforms, hardware RAM, SERL mechanics, OS settings, companion CLI launcher, security).
+  - Updated `src/data/howItWorks.ts` with explicit `>` prompt prefix, zero-trust protection, and SERL remediation.
 
 ## Decisions made
 
-- Sourced binary URLs directly from GitHub Releases CDN (`https://github.com/NetPranav/Cero-Terminal/releases/download/...`) to avoid API rate limits and provide instant file downloads upon clicking.
-- Separated static dictionary data from components into [src/data/commands.ts](file:///e:/Projects/Landing%20Pages/Sentinel%20Landing%20Page/src/data/commands.ts) and [src/data/releases.ts](file:///e:/Projects/Landing%20Pages/Sentinel%20Landing%20Page/src/data/releases.ts) adhering to `AGENTS.md` guidelines.
-- Preserved CLI command previews on the download and documentation pages while clearly identifying them as `Coming Soon` so users aren't confused by unreleased package manager formulas.
+- Sourced binary URLs directly from GitHub Releases CDN (`https://github.com/NetPranav/Cero-Terminal/releases/download/...`) for fast, rate-limit-free downloads.
+- Separated static dictionary data from components into `src/data/commands.ts` and `src/data/releases.ts` adhering to `AGENTS.md`.
+- Labeled unreleased package managers (Homebrew, WinGet, curl) as "Coming Soon" while surfacing the companion `@netpranav/cero-cli` global launcher.
+
+## Problems solved
+
+- **Runtime ReferenceError (`setMounted is not defined`)**:
+  - An orphaned `setMounted(true)` call was left in `src/components/effects/chess-grid-transition/index.jsx` after removing an unused state hook. Removed the call and added eslint disable directive for the effect dependency.
+- **ESLint `react-hooks/set-state-in-effect`**:
+  - In `src/app/download/page.tsx`, deferred `setDownloadTriggered(true)` via `setTimeout` to prevent cascading render warnings.
+- **Unused variables**:
+  - Removed unused `blockRef` from `src/components/layout/Navbar.tsx`.
 
 ## Current state
 
-- Production build (`npm run build`) succeeded with 0 errors across all 8 static pages (`/`, `/_not-found`, `/docs`, `/docs/architecture`, `/docs/commands`, `/docs/installation`, `/docs/releases`, `/download`).
-- All homepage copy, documentation pages, and download interactions are 100% synchronized with Cero's latest v2.2 capabilities.
+- Production build (`npm run build`) passed with 0 errors across all 8 static routes.
+- ESLint (`npx eslint src`) passed with 0 errors and 0 warnings.
+- All changes committed and pushed to `origin/main` (`5cd3d70`) and deployed to production at `https://cero-magnm.vercel.app/`.
+- Git working directory is 100% clean.
 
 ## Next session starts with
 
-- Awaiting user input for any additional styling or features.
+- Awaiting user input for any additional styling, features, or custom interactions.
 
 ## Open questions
 
-- None at this moment.
+- None.
